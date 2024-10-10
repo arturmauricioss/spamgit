@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrator de Dados com Ordenação</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Extrator de Dados com Ordenação</h1>
+    
+    <!-- Área de texto para entrada -->
+    <textarea id="inputText" rows="10" cols="100" placeholder="Cole seu texto aqui"></textarea><br><br>
+    
+    <!-- Botão para extrair os dados -->
+    <button onclick="extractData()">Extrair e Organizar Dados</button>
+    
+    <h2>Dados Organizados</h2>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">ID</th>
+                <th onclick="sortTable(1)">Código</th>
+                <th onclick="sortTable(2)">Email 1</th>
+                <th onclick="sortTable(3)">Email 2</th>
+                <th onclick="sortTable(4)">Descrição</th>
+                <th onclick="sortTable(5)">Status</th>
+                <th onclick="sortTable(6)">Data 1</th>
+                <th onclick="sortTable(7)">API</th>
+                <th onclick="sortTable(8)">Mailbox Status</th>
+                <th onclick="sortTable(9)">Data 2</th>
+                <th onclick="sortTable(10)">Mensagem</th>
+                <th onclick="sortTable(11)">IP 1</th>
+                <th onclick="sortTable(12)">Porta 1</th>
+                <th onclick="sortTable(13)">Email 3</th>
+                <th onclick="sortTable(14)">IP 2</th>
+                <th onclick="sortTable(15)">Porta 2</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        let sortOrder = true; // true = ascendente, false = descendente
+
+        function extractData() {
+            const text = document.getElementById('inputText').value;
+
+            // Dividir o texto em linhas
+            const lines = text.trim().split('\n');
+
+            // Limpar tabela
+            const tableBody = document.querySelector("#dataTable tbody");
+            tableBody.innerHTML = '';
+
+            lines.forEach(line => {
+                // Dividir cada linha em campos usando a vírgula como delimitador
+                const fields = line.split(',');
+
+                // Se a linha tem o número esperado de campos, adicionar à tabela
+                if (fields.length === 15) {
+                    const row = document.createElement('tr');
+
+                    fields.forEach(field => {
+                        const cell = document.createElement('td');
+                        cell.textContent = field.replace(/^"|"$/g, ''); // Remover aspas duplas
+                        row.appendChild(cell);
+                    });
+
+                    tableBody.appendChild(row);
+                } else {
+                    alert("Formato de dados incorreto na linha: " + line);
+                }
+            });
+        }
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById("dataTable");
+            const rows = Array.from(table.querySelectorAll("tbody tr"));
+            
+            // Ordenar as linhas
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.children[columnIndex].textContent.trim().toLowerCase();
+                const cellB = rowB.children[columnIndex].textContent.trim().toLowerCase();
+                
+                if (cellA < cellB) return sortOrder ? -1 : 1;
+                if (cellA > cellB) return sortOrder ? 1 : -1;
+                return 0;
+            });
+
+            // Reordenar a tabela com as linhas ordenadas
+            const tableBody = table.querySelector("tbody");
+            rows.forEach(row => tableBody.appendChild(row));
+
+            // Alternar a ordem de classificação
+            sortOrder = !sortOrder;
+        }
+    </script>
+
+</body>
+</html>

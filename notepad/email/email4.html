@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrator de E-mails com Filtro Avançado</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .hidden-column {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Extrator de E-mails com Filtro Avançado</h1>
+    
+    <!-- Área de texto para entrada -->
+    <textarea id="inputText" rows="10" cols="50" placeholder="Cole seu texto aqui"></textarea><br><br>
+    
+    <!-- Botão para extrair os e-mails -->
+    <button onclick="extractEmails()">Extrair e Organizar E-mails</button>
+    
+    <!-- Campos de filtro -->
+    <div>
+        <label for="includeInput">Palavras Obrigatórias:</label>
+        <input type="text" id="includeInput" placeholder="Digite palavras obrigatórias" oninput="filterEmails()">
+    </div>
+    <div>
+        <label for="excludeInput">Palavras Excluídas:</label>
+        <input type="text" id="excludeInput" placeholder="Digite palavras excluídas" oninput="filterEmails()">
+    </div>
+    
+    <!-- Checkbox para mostrar/ocultar coluna de domínio -->
+    <div style="margin-top: 20px;">
+        <label for="toggleDomain">Mostrar coluna de domínio</label>
+        <input type="checkbox" id="toggleDomain" checked onchange="toggleDomainColumn()">
+    </div>
+    
+    <h2>E-mails Organizados por Domínio</h2>
+    <table id="emailTable">
+        <thead>
+            <tr>
+                <th>E-mail</th>
+                <th id="domainHeader">Domínio</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        let sortedEmails = [];
+
+        function extractEmails() {
+            const text = document.getElementById('inputText').value;
+
+            // Expressão regular para encontrar emails
+            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+            const emails = text.match(emailRegex);
+
+            if (!emails) {
+                alert("Nenhum e-mail encontrado!");
+                return;
+            }
+
+            // Separar os emails por domínio e organizar alfabeticamente
+            sortedEmails = emails.sort((a, b) => {
+                const domainA = a.split('@')[1].toLowerCase();
+                const domainB = b.split('@')[1].toLowerCase();
+                return domainA.localeCompare(domainB);
+            });
+
+            // Exibir os e-mails na tabela
+            displayEmails(sortedEmails);
+        }
+
+        function displayEmails(emails) {
+            // Limpar tabela
+            const tableBody = document.querySelector("#emailTable tbody");
+            tableBody.innerHTML = '';
+
+            // Preencher tabela com e-mails
+            emails.forEach(email => {
+                const domain = email.split('@')[1];
+                const row = document.createElement('tr');
+                const emailCell = document.createElement('td');
+                const domainCell = document.createElement('td');
+
+                emailCell.textContent = email;
+                domainCell.textContent = domain;
+
+                row.appendChild(emailCell);
+                row.appendChild(domainCell);
+                tableBody.appendChild(row);
+            });
+
+            // Aplicar a visibilidade da coluna de domínio
+            toggleDomainColumn();
+        }
+
+        function filterEmails() {
+            // Obter os valores dos campos de filtro
+            const includeValue = document.getElementById('includeInput').value.toLowerCase();
+            const excludeValue = document.getElementById('excludeInput').value.toLowerCase();
+
+            // Filtrar os e-mails com base nas palavras obrigatórias e excluídas
+            const filteredEmails = sortedEmails.filter(email => {
+                const domain = email.split('@')[1].toLowerCase();
+                const includesRequiredWords = includeValue.split(',').every(word => domain.includes(word.trim()));
+                const excludesForbiddenWords = excludeValue.split(',').every(word => !domain.includes(word.trim()));
+                return includesRequiredWords && excludesForbiddenWords;
+            });
+
+            // Exibir os e-mails filtrados
+            displayEmails(filteredEmails);
+        }
+
+        function toggleDomainColumn() {
+            // Verificar se o checkbox está marcado
+            const showDomain = document.getElementById('toggleDomain').checked;
+
+            // Alterar a visibilidade da coluna de domínio
+            const domainCells = document.querySelectorAll('#emailTable tbody td:nth-child(2)');
+            const domainHeader = document.getElementById('domainHeader');
+
+            if (showDomain) {
+                domainHeader.classList.remove('hidden-column');
+                domainCells.forEach(cell => cell.classList.remove('hidden-column'));
+            } else {
+                domainHeader.classList.add('hidden-column');
+                domainCells.forEach(cell => cell.classList.add('hidden-column'));
+            }
+        }
+    </script>
+
+</body>
+</html>

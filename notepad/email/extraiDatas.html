@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrair Datas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Extrair Datas do Texto</h1>
+    <textarea id="texto" rows="10" cols="80">
+        X.com censurado no Brasil: escolha NOSTR
+        11 Setembro 2024, 16:41 h | nostr activitypub fediverse bluesky threads twitter
+        2024 - Agosto
+        X.com censurado no Brasil? Como configurar Mullvad VPN
+        29 Agosto 2024, 12:51 h | twitter mullvad openvpn
+        2024 - Abril
+        Meu "Netflix Pessoal" com Docker Compose
+        03 Abril 2024, 13:30 h | nas synology plex sonarr radarr prowlarr qbittorrent jackett flaresolvrr bluray
+        2023 - Dezembro
+        [Akitando] #149 - Configurando Docker Compose, Postgres, com Testes de Carga - Parte Final da Rinha de Backend
+        16 Dezembro 2023, 09:30 h | rinhabackend docker podman gatling pgadmin postgres portainer nginx php node.js java sql akitando
+        2023 - Novembro
+        [Akitando] #148 - O que IAs podem fazer? | Exemplos de Ferramentas
+        29 Novembro 2023, 09:00 h | ia chatgpt openai elevenlabs heygen davinci adobe blackmagic akitando
+        [Akitando] #147 - Criptografia na Prática - Certificados, BitTorrent, Git, Bitcoin
+        10 Novembro 2023, 10:00 h | openssl certbot letsencrypt linux manjaro arch bittorrent git bitcoin akitando
+        2023 - Outubro
+        [Akitando] #146 - Protegendo e Recuperando Dados Perdidos - Git, Backup, BTRFS
+        19 Outubro 2023, 10:00 h | git docker btrfs zfs synology manjaro ubuntu akitando
+        2023 - Setembro
+        [Akitando] #145 - 16 Linguagens em 16 Dias: Minha Saga da Rinha de Backend
+        20 Setembro 2023, 15:35 h | rinha docker gatling c# rust go lang nim lang v lang bun javascript php swoole python sanic hyperf ruby on rails ruby node.js akitando
+        2023 - Agosto
+        [Akitando] #144 - Modelagem de Software é Difícil? | "Ver" vs "Enxergar"
+        11 Agosto 2023, 15:57 h | ddd domain driven development design patterns martin fowler bob martin uncle bob eric evans gang of four software design software modelling modelagem arquitetura magento ecommerce akitando
+        2023 - Julho
+        [Akitando] #143 - Discutindo sobre Banco de Dados - Dos primórdios a Big Data
+        22 Julho 2023, 08:00 h | dbase clipper xbase harbour foxpro dbf database b-tree btrfs sql server oracle postgresql mariadb mysql sqlite3 amazon aws dynamodb cassandra datastax scilladb akitando
+        2023 - Junho
+        [Akitando] #142 - Entendendo COMO ChatGPT Funciona - Rodando sua Própria IA
+        19 Junho 2023, 17:47 h | chatgpt openai vicuna llama gpt transformers pytorch tensorflow akitando
+        2023 - Abril
+        [Akitando #141] Conversando sobre TDAH, Autismo, Ansiedade e Depressão | Tirando a Camisa de Força
+        25 Abril 2023, 09:00 h | tdah adhd asd tea autismo ansiedade depressão rejeição psicologia neurologia cérebro akitando
+        [Akitando #140] Desbloqueando o "Algoritmo" do Twitter - Introdução a Grafos
+        11 Abril 2023, 08:00 h | grafos twitter the-algorithm machine learning algebra estatistica probabilidade ciencia da computação hadoop hdfs spark graphx pinecone salsa pagerank hits graphjet realgraph lucene elastic protobuf scala ruby on rails akitaonrails
+        2023 - Março
+        [Akitando #139] - Entendendo Como Containers Funcionam
+        02 Março 2023, 09:00 h | container docker runc podman kubernetes terraform akitando
+        2023 - Fevereiro
+        [Akitando] #138 - Meu Começo de Carreira Durante a Bolha - 1997 a 2002, Bug do Milênio, Crash
+        14 Fevereiro 2023, 09:00 h | kropki fnazca psinet sti bbs erp sap psn corinthians macromedia director flash asp sqlserver zope php apache hpg geocities bolha crash pontocom startup akitando
+        [Akitando] #137 - Games em Máquina Virtual com GPU Passthrough | Entendendo QEMU, KVM, Libvirt
+        01 Fevereiro 2023, 08:00 h | qemu kvm libvirt virt-manager virtio nvidia passthrough evdev ddcutil iommu spice virtualização virtualization virtual machine akitando
+        2023 - Janeiro
+        [Akitando] #136 - Python? Java? Rust? Qual a Diferença? | Discutindo Linguagens
+        18 Janeiro 2023, 08:00 h | python javascript java erlang elixir golang rust c# php ruby apache cassandra kafka akitando
+        [Akitando] #135 - ChatGPT Consegue te Substituir? | Entendendo Jobs Assíncronos
+        05 Janeiro 2023, 11:00 h | chatgpt node.js bull kafka spring boot promises async aws akitando
+        2022 - Dezembro
+        [Akitando] #134 - Top 3 Distros Linux | Qual Recomendo?
+        23 Dezembro 2022, 09:18 h | mandrake mandriva conectiva garuda manjaro archlinux ubuntu debian redhat opensuse fedora centos batocera ambernic ayaneo
+        [Akitando] #133 - Tornando sua App Web Mais Rápida! | 4 Técnicas de Otimização
+        12 Dezembro 2022, 09:30 h | otimização frameworks caching cdn database banco de dados nosql aws azure heroku rds sqs redis memcache new relic akitando
+        2022 - Novembro
+        [Akitando] #132 - Rant: A Bolha de Startups Estourou?
+        22 Novembro 2022, 10:15 h | bolha startups ftx criptomoeda demissões layoffs binance akitando
+        [Akitando] #131 - Sua Segurança é uma DROGA | Gerenciadores de Senhas, 2FA, Encriptação
+        08 Novembro 2022, 10:20 h | segurança 2fa two-factor bitwarden authy veracrypt bcrypt pbkdf2 sha512 aes bitlocker filevault luks lastpass 1password kevin mitnick akitando
+        2022 - Outubro
+        [Akitando] #130 - Rant: Projetos, TESTES e Estimativa??? | Rated-R
+        25 Outubro 2022, 10:30 h | testes tdd gestão projetos equipes estimativa agile metodologia akitando
+        [Akitando] #130 - Rant: Projetos, TESTES e Estimativa??? | Rated-R
+        25 Outubro 2022, 10:30 h | testes tdd gestão projetos equipes estimativa agile metodologia akitando
+        [Akitando] #129 - Apanhando do Gentoo | Melhor Linux???
+        11 Outubro 2022, 09:47 h | linux gentoo systemd openrc kernel distro gnome webkit akitando
+        2022 - Setembro
+        [Akitando] #128 - Entendendo Pacotes com Slackware | Deb, Apt, Tarbals
+        25 Setembro 2022, 12:49 h | slackware linux apt debian tarball cfdisk akitando
+        [Akitando] #127 - Como Funciona o Boot de um Linux? | O que tem num LiveCD?
+        12 Setembro 2022, 18:05 h | ubuntu calamares livecd fstab systemd sysv distro linux akitando
+        2022 - Agosto
+        [Akitando] #126 - Criando uma Rede Segura | Introdução a Redes Parte 6 - VPN e NAS
+        29 Agosto 2022, 10:01 h | nas synology drobo pi-hole dns plex jellyfin radarr sonarr prowlarr vpn openvpn wireguard zerotier tailscale nordvpn akitando
+        [Akitando] #125 - Burlando Proxies e Firewalls | Introdução a Redes Parte 5 - SSH
+        17 Agosto 2022, 10:32 h |
+        [Akitando] #124 - Como Funciona Sockets, Cliente, Servidor e a Web? | Introdução a Redes Parte 4
+        04 Agosto 2022, 10:21 h | ipc socket node.js http https tls ftp sftp telnet ssh port browser akitando
+        2022 - Julho
+        [Akitando] #123 - Como sua Internet Funciona | Introdução a Redes Parte 3
+        23 Julho 2022, 11:54 h | internet router roteador dhcp dns arp ipv4 ipv6 nat cgnat akitando
+        [Akitando] #122 - Detecção e Correção de Erros | Introdução a Redes Parte 2
+        13 Julho 2022, 10:50 h | hamming reed-solomon checksum burst error raio cósmico cosmic ray eleição votos nas raid redundância akitando
+        [Akitando] #121 - Introdução a Redes: Como Dados viram Ondas? | Parte 1
+        01 Julho 2022, 18:09 h | circuit switch packet switch ethernet wifi 5g wifi 6 modem mux demux rede network akitando
+        2022 - Junho
+        [Akitando] #120 - Discutindo Gestão
+        13 Junho 2022, 10:47 h | gerenciamento gestão henry mintzberg sun tzu peter drucker nonaka takeuchi scrum schwaber sutherland agile estimativa priorizar projetos akitando
+        2022 - Maio
+        [Akitando] #119 - Rant: Aprendizado na Beira do Caos | Rated R
+        30 Maio 2022, 10:33 h | deming goldratt lean toyota motorola six sigma jack welsh shigeo shingo taiichi ohno beira do caos edge of chaos medo akitando
+        [Akitando] #118 - Fiz um servidor de "SQL"?? | Entendendo Banco de Dados
+        09 Maio 2022, 11:20 h | database sqlite3 btree avltree cormen antlr4 transpiler javascript postgres akitando
+        2022 - Abril
+        [Akitando] #117 - Linguagem Compilada vs Interpretada | Qual é melhor?
+        15 Abril 2022, 17:34 h | compilador interpretador máquina virtual llvm gcc java javascript v8 lexer parser chomski backus naur bnf algol akitando
+        2022 - Março
+        [Akitando] #116 - De 5 Tera a 25 Giga | Compressão de Dados e Multimídia
+        23 Março 2022, 14:28 h | jpeg h.264 h.265 hevc fourier lempel-ziv zip 7zip rar video compressão akitando
+        [Akitando] #115 - Caminho pro Melhor Teclado do Mundo!
+        07 Março 2022, 12:39 h | keychron planck moonlander ergodox kinesis ibm máquina de escrever typewriter qwerty dvorak colemak workman ducky anne pro akitando
+        2022 - Fevereiro
+        [Akitando] #114 - O Melhor Setup Dev com Arch e WSL2
+        15 Fevereiro 2022, 12:52 h |
+        2022 - Janeiro
+        [Akitando] #113 - A Forma Ideal de Projetos Web | Os 12 Fatores
+        29 Janeiro 2022, 16:59 h | heroku 12 fatores testes continuous integration continuous deployment arquitetura agilidade akitando
+        [Akitando] #112 - Subindo Aplicações Web em Produção | Aprendendo HEROKU
+        10 Janeiro 2022, 12:15 h | heroku web deployment php kubernetes docker dokku 12 factors continous deployment continuous integration akitando
+        2021 - Dezembro
+        [Akitando] #111 - RANT: Média Salarial NÃO Existe | Entendendo Power Laws
+        20 Dezembro 2021, 11:18 h | power law normal gaussiana estatística linked redes grafos salário mercado akitando
+        [Akitando] #110 - Como fazer o Ingresso.com escalar? | Conceitos Intermediários de Web
+        08 Dezembro 2021, 11:33 h | ingresso homem-aranha cinema escalabilidade jobs async/await waiting room cdn caching akitando
+        2021 - Novembro
+        [Akitando] #109 - Programa de Trainee CodeMiner 42 | Sua Primeira Oportunidade
+        12 Novembro 2021, 11:32 h | codeminer42 trainee estágio carreira akitando
+        2021 - Outubro
+        Examinando o Vazamento do Twitch
+        21 Outubro 2021, 11:18 h | twitch vazamento leak akitando
+        [Akitando] #106 - Recomendação de Livros - Introdução à Design Emergente
+        11 Outubro 2021, 12:31 h | design patterns domain driven design uml pragmatic programmer clean code robert martin martin fowler dave thomas andy hunt kent beck extreme programming agile rup akitando
+        [Akitando] #105 - Mostrando meu Setup de Gravação | Aprendendo sobre CODECs
+        01 Outubro 2021, 11:12 h | atomos ninja v sony a7iii h.264 h.265 prores dnxhr codec setup estúdio akitando
+        2021 - Setembro
+        [Akitando] #104 - RANT: Empreendendo com Software do JEITO ERRADO!
+        28 Setembro 2021, 11:20 h | projetos terceirização startup empreendedorismo akitando
+        2021 - Agosto
+        [Akitando] #103 - Todos os Sistemas de Arquivos: de FAT a ZFS
+        03 Agosto 2021, 11:23 h | vfs zfs btrfs apfs ntfs ext4 jfs xfs reiserfs hfs macintosh windows linux akitando
+        2021 - Julho
+        [Akitando] #102 - Entendendo Sistemas de Arquivos: FAT
+        20 Julho 2021, 11:37 h | fat windows 95 ms-dos os/2 b-tree akitando
+        [Akitando #101] Tudo que Você Queria Saber Sobre Dispositivos de Armazenamento
+        06 Julho 2021, 11:08 h | uefi ssd nvme nas thunderbolt usb raid akitando
+        2021 - Junho
+        [Akitando] #100 - Mercado Financeiro Pós-Pandemia: A Tempestade Perfeita?
+        22 Junho 2021, 12:07 h | economia venture capital spac fintech softbank akitando
+        [Akitando] #99 - Quebrei 3 HDs: Entendendo Armazenamento
+        09 Junho 2021, 13:21 h | drobo synology raid chs lba akitando
+        2021 - Maio
+        [Akitando] #98 - A Longa História de CPUs e GPUs | Jogos de Windows em Linux??
+        26 Maio 2021, 12:26 h | cuda shaders opengl opencl vulkan dxvk directx steam games akitando
+        [Akitando] #97 - Só Precisamos de 640 kB de Memória? | 16-bits até 64-bits!
+        13 Maio 2021, 10:41 h | ms-dos ram rom nes 6502 pae dep aslr 32-bits 64-bits emm386 akitando
+        2021 - Abril
+        [Akitando] #96 - Estrada do Futuro em 1996 | Meus 19 Anos
+        20 Abril 2021, 11:57 h | bill gates estrada do futuro the road ahead video on demand streaming smartphone akitando
+        [Akitando] #95 - Árvores: O Começo de TUDO | Estruturas de Dados e Algoritmos
+        06 Abril 2021, 10:30 h | algoritmos big o akitando árvore tree bst avl red black tree rbtree estrutura de dados ciência da computação
+        2021 - Março
+        [Akitando] #94 - O que vem DEPOIS do Hello World | Consertando meu C
+        22 Março 2021, 15:12 h | algoritmos estruturas de dados complexidade big o hashtable lista ligada array memória virtual akitando
+        [Akitando] #93 - Hello World Como Você Nunca Viu! | Entendendo C
+        06 Março 2021, 10:00 h | linguagem c estrutura de dados gcc akitando
+        2021 - Fevereiro
+        [Akitando] #92 - RANT de 200K! | Upgrade do meu PC
+        11 Fevereiro 2021, 17:00 h | nvidia amd rtx 3080 ps5 xbox series x intel gainward akitando
+        2021 - Janeiro
+        [Akitando] #91 - Qual a REAL diferença entre Arquivos Binário e Texto?? 🤔
+        20 Janeiro 2021, 10:00 h | ascii unicode elf executável shell zsh bash akitando
+        [Akitando] #90 - O que os Cursos NÃO te Ensinam sobre Mercados
+        06 Janeiro 2021, 10:30 h | dowhile akitando
+        2020 - Dezembro
+        [Akitando] #89 - Introdução a Videogames e Emuladores
+        22 Dezembro 2020, 10:30 h | videogame emulador retroarch ultrahle cemu citra nintendo sega sony playstation xbox saturn akitando
+        [Akitando] #88 - RANT: Selo de Segurança é Marketing | Entendendo o Fator Humano
+        08 Dezembro 2020, 09:30 h | segurança infosec itil cobit togaf sarbanes-oxley hacker phishing engenharia social akitando
+        2020 - Novembro
+        [Akitando] #87 Turing Complete, Emuladores e o Chip ARM M1
+        27 Novembro 2020, 20:00 h | apple m1 arm x86 emulador turing complete akitando
+        2020 - Outubro
+        [Akitando] #86 - O Computador de Turing e Von Neumann | Por que calculadoras não são computadores?
+        23 Outubro 2020, 10:00 h | alan turing john von neumann turing complete turing machine konrad zuse charles babbage edvac princeton göttinger hilbert akitando
+        [Akitando] #85 - Monetizar? Bloquear ADs? O que Fazer?
+        09 Outubro 2020, 17:15 h | youtube monetização patrocínio doação akitando
+        2020 - Setembro
+        [Akitando #84] Entendendo "O Dilema Social" e Como Você é Manipulado
+        30 Setembro 2020, 19:15 h | o dilema social redes sociais machine learning bayes asch milgram dan ariely philip zimbardo paul graham akitando
+        2020 - Agosto
+        [Akitando #83] "Akita, quais Cursos você recomenda? E o Low-Code? E o GPT-3?"
+        28 Agosto 2020, 10:00 h | cursos ead gpt-3 deepmind low-code no-code ansiedade akitando
+        [Akitando] #82 - "Os Rumores da Minha Morte foram Exageradas" 🤣
+        13 Agosto 2020, 10:00 h | akitando
+        2020 - Junho
+        [Akitando] #81 - Aprendendo sobre Computadores com Super Mario (do jeito Hardcore++)
+        18 Junho 2020, 10:00 h | nintendo nes famicom 6502 assembly cc65 game genie micro mages morphcat dotemu wonderboy tectoy fceux mesen tasvideos speedrun super mario steam akitando
+        [Akitando] #80 - O Guia +Hardcore de Introdução à COMPUTAÇÃO
+        04 Junho 2020, 09:44 h | nintendo nes 6502 assembly breadboard akitando
+        2020 - Maio
+        [Akitando #79] Teclados Mecânicos Exóticos | Minha coleção - Parte 2
+        12 Maio 2020, 17:55 h | keychron drop ctrl ultimate hacking keyboard qwerkywriter olivetti ibm telex unix baudot ascii unicode ergonomia sculpt kinesis akitando
+        O Resultado do Modelo do Imperial College sobre a COVID-19 pode estar ERRADO
+        07 Maio 2020, 05:02 h | covid-19 imperial college
+        [Akitando #78] - Entendendo Teclados Mecânicos | Minha coleção - Parte 1
+        05 Maio 2020, 18:00 h | corsair razer logitech matias realforce cherry kaihua gateron topre teclados keyboards apple butterfly switch scissor switch thinkpad surface akitando
+        2020 - Abril
+        [Akitando] #77 - A COVID-19 matou minha Startup? | Entendendo Criptomoedas
+        15 Abril 2020, 10:30 h | criptomoedas fed covid-19 bretton woods gold standard bitcoin omnitrade akitando
+        [Akitando] #76 - Guia DEFINITIVO de Aprendendo a Aprender | A maior BRONCA da sua vida [RATED R]
+        01 Abril 2020, 10:41 h | covid-19 42sp école 42 codeminer aprendizado programação cursos akitando
+        2020 - Março
+        [Akitando] #75 - O que vem DEPOIS do COVID-19?
+        24 Março 2020, 20:00 h | covid-19 corona virus escola austriaca fed bacen quantitative easing crise financeira 2008 grande depressão 1929 akitando
+        [Akitando] #74 - Emacs vs Java | Oracle vs Google
+        18 Março 2020, 10:30 h | emacs richard stallman java james gosling gpl oracle google android openjdk akitando
+        [Akitando] #73 - RANT: A Realidade do "Software Livre"
+        04 Março 2020, 10:30 h | software livre free software open source richard stallman gpl agpl bsd fair use copyright akitando
+        2020 - Fevereiro
+        [Akitando] #72 - RANT: Programação NÃO É Fácil
+        19 Fevereiro 2020, 10:30 h | akitando
+        [Akitando] #71 - Usando Git Direito | Limpando seus Commits!
+        12 Fevereiro 2020, 10:30 h | git github linux monorepo akitando
+        [Akitando] #70 - Entendendo GIT | (não é um tutorial!)
+        05 Fevereiro 2020, 10:30 h | git linux linus torvalds subversion cvs sourcesafe tfs akitando
+        2019 - Dezembro
+        [Akitando] #69 - Respondendo suas Perguntas sobre Carreira | via Instagram
+        11 Dezembro 2019, 11:00 h | carreira javascript mercado empreendedorismo akitando
+        2019 - Novembro
+        [Akitando] #68 - Entendendo Conceitos Básicos de CRIPTOGRAFIA | Parte 2/2
+        26 Novembro 2019, 11:00 h | pbkdf2 bcrypt scrypt argon2 pki diffie-hellman rsa elliptic-curve shor tls ssh akitando
+        [Akitando] #67 - Entendendo Conceitos Básicos de CRIPTOGRAFIA | Parte 1/2
+        21 Novembro 2019, 11:00 h | aes des tripledes encriptação criptografia segurança md5 sha1 hmac hacker hashing enigma alan turing akitando
+        [Akitando] #66 - Entendendo Supremacia Quântica
+        06 Novembro 2019, 11:00 h | google ibm supremacia quântica computação quântica mecânica quântica shor criptografia criptomoedas akitando
+        2019 - Outubro
+        The Conf 2019 Edition Report
+        25 Outubro 2019, 11:27 h | theconf
+        [Akitando] #65 - A Dor de Aprender | Que Cursos/Livros?
+        23 Outubro 2019, 11:00 h | cursos livros design patterns ddd akitando
+        [Akitando] #64 - Começando na Carreira de TI | Faculdade? Níveis de Experiência?
+        16 Outubro 2019, 11:00 h | faculdade engenheria de software ciências da computação sistemas de informação junior pleno senior expert akitando
+        [Akitando] #63 - Não Terceirize suas Decisões! | A Lição MAIS Importante da sua Vida
+        09 Outubro 2019, 11:00 h | autodidata vida carreira decisões akitando
+        2019 - Setembro
+        [Akitando] #62 - Aprendendo "Fotografês" | Brinquedos de Miami
+        26 Setembro 2019, 11:00 h | fotografia canon godox aputure rode akitando
+        [Akitando] #61 - Meus Primeiros 5 Anos | 1990-1995
+        12 Setembro 2019, 11:03 h | unix warez bbs usenet telnet coreldraw dbase clipper borland nantucket fenasoft brasoftgames akitando
+        [Akitando] #60 - Entendendo WSL 2 | E uma curta história sobre Windows NT
+        04 Setembro 2019, 11:00 h | linux sfu wsl bash ubuntu arch cygwin wine proton windows nt akitando
+        2019 - Agosto
+        [Akitando] #59 - A História de Ruby on Rails | Por que deu certo?
+        21 Agosto 2019, 17:00 h | ruby ruby on rails rubyconf railsconf dhh ruby central why the lucky stiff smalltalk agile apple akitando
+        [Akitando] #58 - Aniversário de UM ANO!! | Bastidores do Canal
+        07 Agosto 2019, 17:00 h | bastidores fabio akita akitando
+        2019 - Julho
+        [Akitando] #57 - O Guia DEFINITIVO de Organizações | Desconstruindo o Modelo Spotify [RATED R]
+        31 Julho 2019, 17:00 h | agile spotify squads auto-organização self-organization steven strogatz daniel pink chaos teoria do caos non-linear dynamics organizações teoria da evolução akitando
+        [Akitando] #56 - Falando um pouco de MAC, LINUX e WINDOWS | Qual eu devo escolher?
+        24 Julho 2019, 17:00 h | mac macos windows microsoft linux ubuntu manjaro gentoo slackware debian quartz imac nextstep openstep steve jobs apple adobe akitando
+        [Akitando] #55 - Refletindo sobre RESOLUÇÃO de Problemas | O bug do Premiere
+        16 Julho 2019, 17:00 h | adobe adobe premiere final cut da vinci resolve problemas resolução processo investigativo método socrático sócrates sherlock akitando
+        [Akitando] #54 - O Guia DEFINITIVO de UBUNTU para Devs Iniciantes
+        12 Julho 2019, 17:00 h | linux ubuntu asdf tmux vim docker bash zsh yadr systemd debian flat-remix akitando
+        [Akitando] #53 - 10 Mitos sobre Tech Startups | Parte 2 [Rated R]
+        02 Julho 2019, 17:00 h | bill gates networking business plan business model charles darwin harvard dan ariely nassim taleb akitando
+        2019 - Junho
+        [Akitando] #52 - 10 Mitos sobre Tech Startups | Parte 1
+        25 Junho 2019, 17:00 h | startups incubadoras aceleradoras investimentos venture capital mitos ninja invenção inovação agile akitando
+        [Akitando] #51 - Esqueça Metodologias "Ágeis" | [Rated R]
+        18 Junho 2019, 17:00 h | agile agile manifesto ágil manifesto ágil dave thomas robert martin scrum extreme programming xp kent beck kanban lean safe akitando
+        [Akitando] #50 - A Bolha de Startups vai Estourar? | Winter is Coming
+        11 Junho 2019, 17:00 h | carreira nasdaq stock-option startups lean startup bolha uber pareto salário profissional akitando
+        2019 - Abril
+        [Akitando] #49 - Devo usar NOSQL? | "ENDGAME" para Iniciantes em Programação | Série "Começando aos 40"
+        24 Abril 2019, 17:00 h | faas aws google cloud functions function as a service heroku nosql mongodb postgresql mysql cassandra database endgame devops akitando
+        [Akitando] #48 - Entendendo "Devops" para Iniciantes em Programação (Parte 2) | Série "Começando aos 40"
+        17 Abril 2019, 17:00 h | heroku docker kubernetes cgroups linux devops cloud aws akitando
+        [Akitando] #47 - Entendendo "Devops" para Iniciantes em Programação (Parte 1) | Série "Começando aos 40"
+        10 Abril 2019, 17:00 h | chef puppet cfengine cpanel freebsd linux hypervisor virtualbox vmware hyper-v microsoft google vps xen citrix devops sysadmin cloud akitando
+        [Akitando] #46 - Gerenciamento de Memória (Parte 2) | Entendendo Back-end para Iniciantes (Parte 6)
+        03 Abril 2019, 17:01 h | ptmalloc2 tcmalloc jemalloc ruby java jvm garbage collector python golang memory akitando
+        2019 - Março
+        [Akitando] #45 - Gerenciamento de Memória (Parte 1) | Entendendo Back-end para Iniciantes (Parte 5)
+        27 Março 2019, 17:01 h | tcmalloc jemalloc ptmalloc2 linux rust golang memory ram intel threadripper akitando
+        [Akitando] #44 - Concorrência e Paralelismo (Parte 2) | Entendendo Back-end para Iniciantes (Parte 4)
+        20 Março 2019, 17:00 h | erlang elixir scala clojure golang kotlin ruby python javascript node.js reactor green-threads coroutines goroutine akitando
+        THE CONF 2019 - Call for Papers está no Ar!
+        19 Março 2019, 13:52 h | theconf codeminer infoqbrasil
+        [Akitando] #43 - Concorrência e Paralelismo (Parte 1) | Entendendo Back-End para Iniciantes (Parte 3)
+        13 Março 2019, 17:00 h | concorrência paralelismo multi-core multi-tarefa threads reactor async twisted nginx akitando
+        [Akitando] #42 - Entendendo Apple, GPL e Compiladores
+        06 Março 2019, 17:00 h | apple android swift objective-c java kotlin mobile llvm clang freebsd compiladores emscripten webassembly asm.js v8 rust software livre gpl gcc akitando
+        2019 - Fevereiro
+        [Akitando] #41 - Entendendo Back-End para Iniciantes em Programação (Parte 2) | Série "Começando aos 40"
+        27 Fevereiro 2019, 17:00 h | groovy scala grails ruby ruby on rails python java .net lambda lambda calculus alan turing alonzo church jvm componentização oop programação orientada a objetos programação funcional haskell ocaml akitando
+        [Akitando] #40 - Entendendo Back-End para Iniciantes em Programação (Parte 1) | Série "Começando aos 40"
+        20 Fevereiro 2019, 17:00 h | back-end java .net c# clr jvm linux unix windows assembly compilador interpretador ruby python perl php apache golang akitando
+        [Akitando] #39 - A História do Front-End para Iniciantes em Programação | Série "Começando aos 40"
+        13 Fevereiro 2019, 17:00 h | front-end programação usabilidade ux design responsivo flash javascript coffeescript sass css bootstrap navegadores internet explorer netscape java webpack npm asset pipeline tcp/ip http akitando
+        [Akitando] #38 - Conhecimentos Básicos para Iniciantes em Programação | Série "Começando aos 40"
+        06 Fevereiro 2019, 17:00 h | git linus torvalds github linux ubuntu mint fedora manjaro arch programação developer akitando
+        2019 - Janeiro
+        [Akitando] #37 - A Dimensão do TEMPO para Iniciantes em Programação | Série "Começando aos 40"
+        30 Janeiro 2019, 17:00 h | mercado de ti história da computação apple sun java microsoft iphone akitando
+        [Akitando] #36 - O Mercado de TI para Iniciantes em Programação | Série "Começando aos 40"
+        23 Janeiro 2019, 17:00 h | carreira empresas de ti mercado de ti remuneração profissão de ti programador 40 anos akitando
+        [Akitando] #35 - Pequena retrospectiva 2018 e previsões 2019
+        04 Janeiro 2019, 10:00 h | 2018 2019 microsoft github mercados recessão redhat ibm akitando
+        2018 - Dezembro
+        [Akitando] #34 - Você não sabe nada de Enterprise. Conhecendo a SAP!
+        26 Dezembro 2018, 17:00 h | sap netweaver hana s/4 r/3 hasso platner larry ellison oracle adabas ibm accenture pwc capgemini xerox parc mainframe erp enterprise corporations consultor akitando
+        [Akitando] #33 - Problemas de Confiança para Pessoas inseguras
+        18 Dezembro 2018, 17:00 h | autoajuda confiança insegurança introversão psicologia relacionamentos akitando
+        [Akitando] #32 - Como eu aprendi Inglês? E entendendo "padrões"!
+        11 Dezembro 2018, 17:00 h | inglês english patterns padrões aprendizado cursos intercâmbio akitando
+        [Akitando] #31 - Manifesto Anti-Parasita: Seja um Criador
+        05 Dezembro 2018, 17:00 h | ayn rand the virtue of selfishness the fountainhead a nascente a virtude do egoísmo objetivismo individualismo coletivismo akitando
+        2018 - Novembro
+        [Akitando] #30 - Minha Máquina do Tempo | Meus Sites de Anime
+        29 Novembro 2018, 17:00 h | backup animax revista herói cavaleiros do zodíaco evangelion windows 98 vmware akitando
+        [Akitando] #29 - O que eu devo estudar? Vou conseguir emprego?
+        27 Novembro 2018, 17:00 h | elixir java .net legado akitando
+        [Akitando] #28 - Sua Vida em Anime: KAIJI
+        20 Novembro 2018, 17:00 h | kaiji tonegawa mad house anime prática deliberada vida real empreendedorismo startup akitando
+        [Akitando] #27 - Talento: Matando Semi-Deuses (Parte 2)
+        15 Novembro 2018, 17:00 h | geoff colvin noel tichy mozart deliberate practice akitando
+        [Akitando] #26 - Talento: Matando Semi-Deuses (Parte 1)
+        13 Novembro 2018, 17:00 h | einstein darwin relatividade evolução seleção natural física poincare lorentz wallace akitando
+        [Akitando] #25 - Sua Linguagem É Especial? Parte 2 em 2001
+        08 Novembro 2018, 17:00 h | asp nosql xml xsl psn ajax dhtml akitando
+        [Akitando] #24 - Sua Linguagem É Especial? Parte 1 em 2001
+        06 Novembro 2018, 17:00 h | asp asp.net web frameworks arquitetura web akitando
+        [Akitando] #23 - The MM-M: O Melhor Livro de Software?
+        01 Novembro 2018, 17:00 h | fred brooks harlan mills david parnas tom demarco mythical man-month no silver bullet engenharia de software agile gerenciamento projetos software akitando
+        2018 - Outubro
+        THE CONF - 2018 Edition Report
+        31 Outubro 2018, 22:49 h | theconf
+        [Akitando] #22 - Blockchains servem pra Eleições?
+        30 Outubro 2018, 17:00 h | blockchain eleições segurança fraude nosql the conf akitando
+        [Akitando] #21 - Entendendo Blockchain em São Francisco
+        25 Outubro 2018, 17:00 h | blockchain criptomoedas bitcoin ethereum vitalik sfblockchainweek binance akitando
+        [Akitando] #20 - Malta: A Ilha do Blockchain
+        23 Outubro 2018, 17:00 h | malta criptomoedas blockchain mdia mga msfa joseph muscat silvio schembri abdalla kablan akitando
+        [Akitando] #19 - Devo fazer Faculdade? (Eu, 22 anos depois)
+        18 Outubro 2018, 17:00 h | faculdade dunning-kruger carreira anos 90 akitando
+        [Akitando] #18 - Motivação: O Diário de Henry Jones
+        16 Outubro 2018, 17:00 h | livro enciclopédia indiana jones última cruzada motivação inspiração computação animax evangelion revista herói akitando
+        [Akitando] #17 - O Mundo Hoje É PIOR?
+        12 Outubro 2018, 17:00 h | hans rosling population thanos gapminder akitando
+        [Akitando] #16 - Sua Linguagem NÃO É Especial! (Parte 2)
+        04 Outubro 2018, 17:00 h | grace hopper cobol barbara liskov occam haskell elixir erlang golang python scipy programação computação akitando
+        [Akitando] #15 - Sua Linguagem NÃO É Especial! (Parte 1)
+        02 Outubro 2018, 17:00 h | programação carreira computação algol fortran knuth pascal bash delphi backus bnf akitando
+        2018 - Setembro
+        [Akitando] #14 - Consertando The Last Jedi
+        27 Setembro 2018, 17:00 h | star wars the last jedi force awakens george lucas rian johnson kathleen kennedy j.j. abrams despecialized dc comics warner bros disney akitando
+        [Akitando] #13 - Consertando Justice League
+        25 Setembro 2018, 17:00 h | dceu wisecrack dark knight returns 300 watchmen zack snyder superman men of steel justice league warner bros hitop films akitando
+        [Akitando] #12 - Dúvida! Devo Fazer Faculdade?
+        20 Setembro 2018, 17:00 h | faculdade universidade matemática akitando
+        [Akitando] #11 - Projetos: Aprendendo a Priorizar
+        18 Setembro 2018, 17:00 h | agile priorização stephen covey estimar planejar projetos akitando
+        [Akitando] #10 - 9 Dicas para Palestrantes: Venda sua Caneta!
+        13 Setembro 2018, 17:00 h | the conf garr reynolds zig ziglar sales vendas palestra slides apresentação caneta powerpoint keynote wolf of wall street jordan belfort akitando
+        [Akitando] #9 - 7 Recomendações de Shows para pessoas de Tech
+        11 Setembro 2018, 17:00 h | halt and catch fire steve jobs discovery channel ipod the immitation game the social network recomendações filmes documentários akitando
+        [Akitando] #8 - Procure o que você Ama ... SÓ QUE NÃO!
+        06 Setembro 2018, 17:00 h | amor carreira empreendedorismo startups esforço talento procrastinação antidepressão akitando
+        [Akitando] #7 - A Controvérsia da Lerna vs ICE
+        04 Setembro 2018, 11:00 h | lerna javascript ice palantir gpl agpl mit bsd copyright copyleft akitando
+        2018 - Agosto
+        [Akitando] #6 - 33 exemplos de projetos de ICOs e blockchains
+        30 Agosto 2018, 17:00 h | blockchain criptomoedas ico ethereum erc20 smart contract token startups seoul akitando
+        [Akitando] #5 - Liberdade Econômica, Cripto no Brasil, e para onde aponta o futuro?
+        28 Agosto 2018, 17:00 h | criptomoedas ico seoul beyond blocks blockchain partners kakao brasil real spotniks hans rosling akitando
+        [Akitando] #4 - Blockchain Week Seoul: Entendendo ICOs
+        23 Agosto 2018, 17:00 h | beyond blocks blockchain partners summit seoul ico reverse ico security tokens utility tokens kakao ground x tmon akitando
+        [Akitando] #3 - Por que a Coréia do Sul é tão grande em Criptomoedas?
+        21 Agosto 2018, 17:00 h | coréia do sul seoul beyond blocks criptomoedas hashed akitando
+        [Akitando] #2 - Akitando em Seoul - Parte 2
+        16 Agosto 2018, 17:00 h | seoul yongsam technomart kimchi south korea kakao akitando
+        [Akitando] #1 - Akitando em Seoul - Parte 1
+        10 Agosto 2018, 17:00 h | seoul coréia do sul turismo akitando
+        2018 - Julho
+        [Off-Topic] The Pity Evolution of Modern Society
+        26 Julho 2018, 15:28 h | off-topic libertarianism reason freedom
+        2018 - Abril
+        Running Arch Linux over Windows 10!
+        29 Abril 2018, 22:06 h | archlinux wsl asdf microsoft windows vmware
+        [SmallTips] Running GitLab CI Runner Locally
+        28 Abril 2018, 18:35 h | smalltips gitlab
+        2018 - Janeiro
+        My Notes about a Production-grade Ruby on Rails Deployment on Google Cloud Kubernetes Engine
+        09 Janeiro 2018, 20:13 h | googlecloud kubernetes rubyonrails linux nginx
+        2017 - Dezembro
+        Cryptocurrencies: Is it a Bubble? Does it Matter?
+        05 Dezembro 2017, 10:36 h | cryptocurrency bitcoin blockchain bubble dot-com
+        2017 - Novembro
+        From 10k and Beyond: Discussing Crypto Currencies
+        30 Novembro 2017, 17:04 h | cryptocurrency bitcoin blockchain
+        From Microsoft to Apple, and Back Again
+        21 Novembro 2017, 21:51 h | mac macos apple windows microsoft surface dell
+        THE CONF 2017 - All the Recordings!
+        13 Novembro 2017, 16:55 h | theconf
+        How does Bitcoin force consensus among Byzantine generals?
+        01 Novembro 2017, 14:02 h | ruby blockchain cryptocurrency bitcoin
+        2017 - Outubro
+        [Beginner] Long live PhantomJS, let's use Chrome Headless now
+        31 Outubro 2017, 19:48 h | beginner rubyonrails rails51 nodejs selenium phantomjs chromium chromedriver
+        How NOT to zero out your Pusher development quota
+        27 Outubro 2017, 13:43 h | beginner rubyonrails rails51 pusher rspec
+        [Beginner] Trying out Rails 5.1.x
+        24 Outubro 2017, 16:29 h | beginner rubyonrails rails51 nodejs webpack reactjs
+        Replacing RVM/Rbenv/Nvm/etc for ASDF
+        24 Outubro 2017, 14:19 h | rvm rbenv nvm ruby nodejs elixir
+        THE CONF - 2017 Edition Report
+        02 Outubro 2017, 13:40 h | theconf
+        2017 - Setembro
+        Windows Subsystem for Linux is good, but not enough yet
+        20 Setembro 2017, 14:43 h | windows wsl manjaro nvidia mac microsoft apple
+        2017 - Agosto
+        [Off-Topic] Blockchain e Criptomoedas no Brasil
+        28 Agosto 2017, 13:07 h | blockchain cryptocurrency bitcoin
+        Why it is just lazy to bad-mouth Ruby on Rails
+        03 Agosto 2017, 18:01 h | ruby rails
+        2017 - Julho
+        Upcoming built-in Upload Solution for Rails 5.2 (ActiveStorage)
+        07 Julho 2017, 14:40 h | heroku uploads carrierwave cloudfront cloudinary cdn activestorage
+        2017 - Junho
+        Rails 5.1 Deployment Checklist for Heroku
+        28 Junho 2017, 15:12 h | learning rails heroku postgresql letsencrypt cdn
+        Estimates are Promises - A Better Metaphor
+        26 Junho 2017, 17:44 h | off-topic principles management agile english
+        The Economics of Software Development
+        22 Junho 2017, 10:56 h | off-topic agile lean methodologies startup
+        Starting with Blender
+        21 Junho 2017, 17:32 h | off-topic blender
+        Ex Manga Downloadr - Part 7: Properly dealing with large Collections
+        16 Junho 2017, 15:10 h | beginner learning elixir english exmangadownloadr
+        Ex Manga Downloadr - Part 6: The Rise of FLOW
+        13 Junho 2017, 15:59 h | beginner learning elixir english exmangadownloadr
+        [Off-Topic] Talento é Altamente Supervalorizado: Humanizando Einstein e Matando Deuses
+        08 Junho 2017, 21:23 h | off-topic science religion principles
+        Participando em Podcasts
+        02 Junho 2017, 10:34 h | podcasts interviews
+        Conference Talks, Interviews, and the Pen!
+        01 Junho 2017, 13:24 h | off-topic conferences
+        2017 - Maio
+        Programmers Guild - Religion and Sports
+        14 Maio 2017, 13:45 h |
+        2017 - Março
+        Enabling Optimus NVIDIA GPU on the Dell XPS 15 with Linux, even on Battery
+        14 Março 2017, 14:21 h |
+        2017 - Fevereiro
+        [Off-Topic] Carpe Diem e os Mitos da Felicidade
+        14 Fevereiro 2017, 15:44 h | carreira off-topic felicidade
+        2017 - Janeiro
+        From the Macbook Pro to the Dell XPS. Arch Linux for Creative Pro Users
+        31 Janeiro 2017, 18:26 h | linux archlinux nvidia blender darktable bumblebee
+        Optimizing Linux for Slow Computers
+        17 Janeiro 2017, 18:15 h | linux kernel arch
+        [Off-Topic] Why are we all moving away from Apple?
+        12 Janeiro 2017, 11:37 h | off-topic apple microsoft future
+        Arch Linux - Best distro ever?
+        10 Janeiro 2017, 14:25 h | linux archlinux pacman pacaur asdf
+        Customizing Fedora 25 for Developers
+        06 Janeiro 2017, 17:11 h | linux fedora
+        2016 - Dezembro
+        Ex Pusher Lite - Part 3 - A Complete Solution
+        30 Dezembro 2016, 17:38 h | expusherlite elixir phoenix websockets
+        Elixir Phoenix App deployed into a Load Balanced DigitalOcean setup
+        23 Dezembro 2016, 15:07 h | elixir phoenix deployment edeliver digitalocean websockets
+        Coherence and ExAdmin - Devise and ActiveAdmin for Phoenix
+        06 Dezembro 2016, 18:18 h | elixir phoenix activeadmin devise
+        2016 - Novembro
+        3 Months of GitLab. The Hybrid-SaaS Era
+        16 Novembro 2016, 16:44 h | gitlab saas business
+        [Off-Topic] Learning Statistics
+        01 Novembro 2016, 17:03 h | off-topic statistics r carreira
+        Matches, Rankings, The Social Network, League of Legends, and Ruby?
+        01 Novembro 2016, 10:20 h | ranking elo algorithm
+        2016 - Outubro
+        Ruby on Rails implementation of a (proper) Ranking/Popularity system
+        31 Outubro 2016, 16:51 h | ruby ranking algorithm
+        [Discussion] Can we protect our work from DNS providers suffering DDoS attacks?
+        31 Outubro 2016, 15:00 h | security ddos devops whitehat
+        Natural Language Generation in Ruby (with JRuby + SimpleNLG)
+        28 Outubro 2016, 17:53 h | jruby
+        Iniciativa THE CONF
+        20 Outubro 2016, 12:00 h | theconf conference
+        THE CONF Initiative
+        20 Outubro 2016, 12:00 h | english theconf conference
+        Sharing models between Rails Apps - Part 2
+        03 Outubro 2016, 15:57 h | rails database
+        Sharing models between Rails Apps - Part 1
+        03 Outubro 2016, 15:00 h | rails database
+        2016 - Setembro
+        The Next 10 Years
+        26 Setembro 2016, 13:30 h |
+        Ubuntu 16.04 LTS Xenial on Vagrant on Vmware Fusion
+        21 Setembro 2016, 18:08 h | linux install learning elixir crystal clojure ruby on rails postgresql
+        2016 - Agosto
+        The Ruby Community and Reputation
+        19 Agosto 2016, 11:02 h | community rails ruby ranting
+        Choosing MatterMost over Rocket.chat and Slack
+        13 Agosto 2016, 22:41 h | mattermost docker golang rocket.chat slack
+        Hacking Mattermost Team Edition
+        12 Agosto 2016, 14:43 h | mattermost postgresql rocket.chat slack
+        Moving away from Pivotal Tracker to Fulcrum. Good Enough.
+        10 Agosto 2016, 18:30 h | agile pivotaltracker fulcrum projects
+        Moving away from Slack into Rocket.chat. Good Enough.
+        09 Agosto 2016, 16:21 h | slack rocket.chat group chats
+        Moving to GitLab! Yes, it's worth it!
+        03 Agosto 2016, 14:49 h |
+        2016 - Julho
+        Updating my Old Posts on Uploads
+        28 Julho 2016, 11:56 h | uploads carrierwave cdn cloudfront cloudinary heroku
+        The Year of Linux on the Desktop - It's Usable!
+        26 Julho 2016, 14:13 h | microsoft off-topic
+        Trying to match C-based Fast Blank with Crystal
+        06 Julho 2016, 17:10 h | crystal
+        2016 - Junho
+        [Manga-Downloadr] Improving the Crystal/Ruby from bursts to pool stream
+        07 Junho 2016, 17:13 h | manga-downloadr crystal jruby
+        [Manga-Downloadr] Porting from Crystal to Ruby (and a bit of JRuby)
+        06 Junho 2016, 18:06 h | manga-downloadr crystal jruby
+        Small Experiment with Rails over JRuby 9.x on Heroku
+        03 Junho 2016, 18:12 h | jruby heroku
+        2016 - Maio
+        Flirting with Crystal, a Rubyist Perspective
+        31 Maio 2016, 18:21 h | crystal
+        Rails has won: The Elephant in the Room
+        23 Maio 2016, 17:21 h | off-topic open source rants
+        2016 - Abril
+        [Off-Topic] Software Livre: Exercício de CAPITALISMO
+        22 Abril 2016, 15:30 h | off-topic open source free software carreira
+        [Off-Topic] Se Você Precisa de "Validação", Provavelmente está Errado
+        20 Abril 2016, 15:49 h | off-topic carreira
+        The Year of Linux on the Desktop, by Microsoft ??
+        12 Abril 2016, 18:33 h | off-topic microsoft ubuntu
+        2016 - Março
+        War is Over, or is it? A New Dawn for Microsoft
+        31 Março 2016, 18:02 h | translation off-topic microsoft
+        [Off-Topic] Uma Nova Era para a Microsoft
+        31 Março 2016, 16:10 h | off-topic microsoft
+        Improving your Microservices Integration Performance with Memcache and ETAGs
+        23 Março 2016, 14:46 h | learning rails otimization performance heroku memcached
+        Is your Rails app ready for Production?
+        22 Março 2016, 15:11 h | learning rails heroku deployment optimization security performance
+        2016 - Fevereiro
+        Beware: Server-side APIs for Client-Side Rendering and Cross Site Scripting (XSS)
+        22 Fevereiro 2016, 13:27 h | ruby rails security xss
+        Elixir Pipe Operator for Ruby: Chainable Methods
+        18 Fevereiro 2016, 16:28 h | ruby elixir
+        2015 - Dezembro
+        Fixing DHH's Rails 5 Chat Demo
+        28 Dezembro 2015, 16:11 h | pusher rails5 actioncable websocket
+        Ex Pusher Lite - Part 2 - First Working Core!
+        14 Dezembro 2015, 15:04 h | elixir phoenix pusher expusherlite english
+        Ex Pusher Lite - Part 1: Phoenix Channels and Rails apps
+        09 Dezembro 2015, 18:39 h | elixir phoenix pusher english expusherlite
+        Erlang's Ping Pong (tut15) in Clojure and Elixir
+        09 Dezembro 2015, 14:42 h | learning beginner elixir english
+        Ex Manga Downloadr - Part 5: Making it more robust!
+        06 Dezembro 2015, 19:20 h | learning beginner elixir english exmangadownloadr
+        Ex Manga Downloadr - Part 4: Learning through Refactoring
+        03 Dezembro 2015, 17:40 h | exmangadownloadr learning beginner elixir english
+        The Obligatory "Flame War" Phoenix vs Node.js
+        03 Dezembro 2015, 12:01 h | learning beginner elixir phoenix node english
+        Ex Manga Downloadr - Part 3: Mangafox Support!
+        02 Dezembro 2015, 16:27 h | exmangadownloadr learning beginner elixir english
+        The Obligatory "Why Elixir?" Personal Take
+        01 Dezembro 2015, 13:26 h | learning beginner elixir english
+        2015 - Novembro
+        "Yocto Services"! And My First Month with Elixir!
+        25 Novembro 2015, 18:04 h | learning beginner elixir english
+        Elixir 101 - Introducing the Syntax
+        25 Novembro 2015, 17:25 h | learning beginner elixir english
+        ExMessenger Exercise: Understanding Nodes in Elixir
+        25 Novembro 2015, 13:19 h | learning beginner elixir english
+        Observing Processes in Elixir - The Little Elixir & OTP Guidebook
+        22 Novembro 2015, 14:57 h | learning beginner elixir english
+        Phoenix "15 Minute Blog" comparison to Ruby on Rails
+        20 Novembro 2015, 17:52 h | learning beginner elixir phoenix english
+        Ex Manga Downloadr - Part 2: Poolboy to the rescue!
+        19 Novembro 2015, 14:35 h | learning beginner elixir english exmangadownloadr
+        Ex Manga Downloader, an exercise with Elixir
+        18 Novembro 2015, 17:26 h | beginner learning elixir english exmangadownloadr
+        Situação Brasil: No Macs for the Rest of Us
+        10 Novembro 2015, 16:54 h | off-topic linux beginner learning
+        My first week learning Elixir
+        03 Novembro 2015, 11:07 h | beginner learning elixir english
+        2015 - Outubro
+        Phoenix Experiment: Holding 2 Million Websocket clients!
+        29 Outubro 2015, 11:28 h | learning elixir phoenix english
+        Personal Thoughts on the Current Functional Programming Bandwagon
+        28 Outubro 2015, 17:14 h | learning career elixir english
+        How Fast is Elixir/Phoenix?
+        27 Outubro 2015, 16:23 h | learning beginner elixir english
+        Novo Layout (versão 2015)
+        13 Outubro 2015, 15:16 h | blog
+        [Heroku] ActiveRecord::ConnectionTimeoutError: Problemas de Max Pool Size, Sidekiq e Octopus
+        08 Outubro 2015, 15:41 h | learning rails sidekiq heroku postgresql
+        Rubyconf Brasil 2015 "Novo Formato" - Sucesso!
+        07 Outubro 2015, 17:38 h | rubyconfbr2015
+        2015 - Agosto
+        [Small Bites] Adicionando um CDN ao seu site (a forma fácil!)
+        25 Agosto 2015, 16:37 h | learning rails heroku
+        [Small Bites] Debugando um Controller pelo Console
+        25 Agosto 2015, 15:48 h | learning rails
+        2015 - Julho
+        [Small Bites] Começando no Grupo "Ruby on Rails Brasil" no Facebook
+        20 Julho 2015, 15:36 h | facebook
+        2015 - Junho
+        [Casa do Código] Livro: Introdução à Computação: Da Lógica aos jogos com Ruby
+        27 Junho 2015, 11:23 h | book learning beginner
+        [Primeiros Passos] Brincando de Rust + Ruby/FFI
+        05 Junho 2015, 16:05 h | learning rust
+        [Primeiros Passos] Elixir 1.0 + Phoenix Framework 0.13
+        02 Junho 2015, 16:14 h | learning elixir erlang
+        2015 - Maio
+        Dynamic Site as fast as a Static Generated One with Raptor
+        20 Maio 2015, 11:51 h | learning passenger rails english
+        [Small Bites] Trocando de SASS para SASSC e colocando no Heroku
+        15 Maio 2015, 13:07 h | learning rails heroku front-end
+        [Small Bites] Brincando de Crawlers e algumas Dicas Úteis
+        15 Maio 2015, 09:10 h | learning ruby
+        2015 - Abril
+        [Prévia] Rubyconf Brasil 2015 - Call for Papers e Novo Formato!
+        28 Abril 2015, 16:35 h | rubyconfbr2015
+        [Small Bites] Brincando com o Jelastic Cloud da Locaweb
+        28 Abril 2015, 12:00 h | locaweb cloud-computing
+        2015 - Março
+        [Small Bites] Novidades no Garbage Collector do Ruby 2.2.1
+        27 Março 2015, 13:06 h | learning ruby
+        2015 - Fevereiro
+        IIS 8 finalmente ganha um módulo de Proxy-Reverso! E como executar Rails sobre JRuby no Windows!
+        16 Fevereiro 2015, 12:29 h | learning rails windows
+        2015 - Janeiro
+        Ruby e Rails no Ubuntu 14.04 LTS Trusty Tahr
+        28 Janeiro 2015, 17:04 h | learning rails linux
+        [Off-Topic] Coletânea "Processos e Metodologias Não Vão Te Ajudar!"
+        07 Janeiro 2015, 14:33 h | off-topic management insights
+        Lembrando os Heróis Ruby que se foram em 2014
+        02 Janeiro 2015, 12:48 h | ruby heroes
+        Começando o Ano com um Ruby Drama: RubySpec vs MRI Core Team
+        02 Janeiro 2015, 12:10 h | rspec fud
+        2014 - Dezembro
+        [Small Bites] Direct Upload para S3: a Solução Definitiva!
+        18 Dezembro 2014, 14:28 h | learning rails heroku
+        [Small Bites] Downloader para MangaReader (Kindle Edition)
+        17 Dezembro 2014, 21:24 h | ruby
+        [Off-Topic] Conversando com um Professor Universitário
+        08 Dezembro 2014, 19:56 h | off-topic career
+        [Small-Bites] Em defesa do Asset Pipeline: tudo que você precisa
+        02 Dezembro 2014, 17:26 h | learning rails javascript front-end
+        2014 - Novembro
+        [Small Bites/Off-Topic] "People over Processes", o que são "People"?
+        21 Novembro 2014, 16:06 h | off-topic principles management agile
+        [Heroku Tips] Usando Followers do Heroku Postgresql
+        10 Novembro 2014, 19:51 h | learning rails heroku postgresql
+        2014 - Outubro
+        The New Kid on the Block for Ruby Servers: Raptor!
+        19 Outubro 2014, 15:00 h | learning passenger
+        [Off-Topic] Impressão 3D, a lenda?
+        07 Outubro 2014, 14:39 h | off-topic insights leisure market startups
+        2014 - Setembro
+        [Off-Topic] Agile: a Verdade por trás do Método
+        28 Setembro 2014, 23:18 h | off-topic principles management career agile carreira
+        [Off-Topic] NÃO Faça o que Você ("ACHA") que Ama
+        13 Setembro 2014, 17:04 h | off-topic principles career insights startups carreira
+        2014 - Agosto
+        Milésimo (1000) Post no Blog!
+        29 Agosto 2014, 11:30 h | celebration blog
+        [Small Bite] Session Injection Challenge
+        28 Agosto 2014, 12:00 h | metasploit security
+        [Small Bite] Brincando com Metasploit
+        27 Agosto 2014, 14:03 h | metasploit security
+        Retrospectiva on Rails - 10 Anos e Muito Mais!
+        26 Agosto 2014, 16:17 h | retrospective rails
+        [Small Bite] Páginas Ruby/Rails Legais para Acompanhar!
+        24 Agosto 2014, 19:34 h | learning beginner ruby rails
+        [Off-Topic] First Time in São Paulo, What to do?
+        24 Agosto 2014, 17:17 h | off-topic tourism english
+        [Small Bite] Um pouco tarde: O Grande Debate Sobre TDD
+        23 Agosto 2014, 17:21 h | learning tests
+        [#WhyDay] 5 Anos Sem _Why
+        19 Agosto 2014, 00:01 h | why
+        [Small Bite] Palestra "Ruby & GC" - QConSP 2014 (Nova Gravação!)
+        01 Agosto 2014, 20:50 h | presentation ruby
+        2014 - Julho
+        [Small Bites] IDEs e Editores, como escolher?
+        31 Julho 2014, 19:54 h | learning ide
+        [Small Bites] Vagrant + Ubuntu 14.04 + Chef Solo
+        28 Julho 2014, 20:22 h | learning beginner linux
+        [Off-Topic] Meu Primeiro "Livro"
+        22 Julho 2014, 20:14 h | biography my-book
+        [Small Bites] Tirando Proveito de Threads em Ruby
+        15 Julho 2014, 14:03 h | learning ruby
+        Aprendendo Ruby e Rails, Livros e Guias
+        13 Julho 2014, 15:18 h | learning beginner ruby rails book
+        [Off-Topic] Alguém importante deixou a comunidade! E agora??
+        06 Julho 2014, 20:38 h | off-topic philosophy insights
+        Web Components é uma Revolução?
+        06 Julho 2014, 01:09 h | insights javascript front-end
+        2014 - Junho
+        Swift para Rubistas, Funções e Closures
+        07 Junho 2014, 12:38 h | learning beginner apple swift objective-c
+        Swift para Rubistas, Rápida Introdução
+        03 Junho 2014, 17:01 h | learning beginner apple swift objective-c
+        2014 - Maio
+        Segurança em Rails
+        22 Maio 2014, 11:39 h | learning beginner rails security
+        [Off-Topic] Carreira em Programação - Codificar não é Programar
+        02 Maio 2014, 15:57 h | off-topic career insights carreira
+        2014 - Abril
+        Vídeos de algumas de minhas Palestras
+        17 Abril 2014, 18:02 h | biography presentation
+        2014 - Março
+        [Off-Topic] Comentando o Marco Civil Aprovado
+        30 Março 2014, 09:46 h | off-topic market regulation
+        [Off-Topic] Breaking Bad foi uma startup de muito sucesso
+        28 Março 2014, 06:00 h | off-topic management insights leisure startups
+        [Off-Topic] Lean está Morto, longa vida à Eficiência
+        27 Março 2014, 15:03 h | off-topic management agile insights
+        [Off-Topic] Lean está Morto, longa vida à eficiência
+        27 Março 2014, 13:08 h | off-topic management agile science startups carreira
+        Introdução ao Rails Composer
+        25 Março 2014, 17:19 h | learning beginner rails
+        2014 - Fevereiro
+        [Off-Topic] O dilema da Nova Geração: empreender ou arranjar um emprego?
+        20 Fevereiro 2014, 06:00 h | off-topic career startups carreira
+        2014 - Janeiro
+        [Dica Rápida] Timeout no Heroku
+        31 Janeiro 2014, 21:14 h | learning rails heroku
+        CodeClimate, Qualidade de Código e os Rubistas Sádicos
+        30 Janeiro 2014, 19:59 h | learning beginner ruby
+        [Criptografia] Não use TripleDES/ECB - e uma curiosidade sobre Cipher Key do .Net
+        13 Janeiro 2014, 13:01 h | learning beginner security
+        2013 - Dezembro
+        Soluções para um Mundo Assíncrono/Concorrente
+        23 Dezembro 2013, 14:34 h | learning rails presentation
+        Rails Assets
+        13 Dezembro 2013, 19:49 h | learning beginner rails front-end javascript
+        2013 - Novembro
+        [Off-Topic] Trabalho Remoto - Small Office, Home Office (SoHo)
+        18 Novembro 2013, 19:11 h | off-topic career insights
+        [Off-Topic] Tech Startups, superlotação de B2C. Boring.
+        14 Novembro 2013, 14:29 h | off-topic startups carreira
+        [Off-Topic] Programadores são péssimos Comunicadores (UDP vs TCP)
+        02 Novembro 2013, 13:49 h | off-topic career carreira
+        [Off-Topic] Agile feito Errado
+        01 Novembro 2013, 10:48 h | off-topic career management agile carreira
+        2013 - Outubro
+        [Tradução] Carta para um Jovem Programador Considerando uma Startup
+        31 Outubro 2013, 15:25 h | off-topic career startups carreira
+        [Off-Topic] Matemática, Trolls, Haters e Discussões de Internet
+        30 Outubro 2013, 21:01 h | off-topic psychology insights
+        Ruby, a linguagem do mundo Cloud
+        29 Outubro 2013, 10:49 h | rails pitch cloud-computing
+        [Iniciante] Configurações de ambiente com Dotenv
+        19 Outubro 2013, 16:14 h | learning beginner rails
+        Rubyconf Brasil 2014 - Dates are Set!
+        07 Outubro 2013, 18:27 h | rubyconfbr2014
+        [Off-Topic] #noEstimates Debunked
+        07 Outubro 2013, 11:35 h | off-topic principles management agile english
+        2013 - Setembro
+        [Heroku Tips] Problemas iniciais com Rails 4 no Heroku
+        11 Setembro 2013, 17:25 h | learning rails heroku
+        Rubyconf Brasil 2013 - Fechamento
+        08 Setembro 2013, 18:50 h | rubyconfbr2013
+        2013 - Agosto
+        Rubyconf Brasil 2013: Conheça Tiago Bastos e Eduardo Gurgel
+        29 Agosto 2013, 14:45 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Conheça Halan Pinheiro
+        28 Agosto 2013, 16:50 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Conheça Luis Cipriani
+        27 Agosto 2013, 10:00 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Meet Luis Cipriani
+        27 Agosto 2013, 10:00 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Meet Carlos Galdino
+        26 Agosto 2013, 09:20 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Carlos Galdino
+        26 Agosto 2013, 09:20 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Lembrando de _Why. Engenharia vs Arte
+        24 Agosto 2013, 22:26 h | rubyconfbr2013
+        [Off-Topic] Estimativas são Promessas. Promessas devem ser cumpridas.
+        23 Agosto 2013, 16:15 h | off-topic principles career management carreira
+        Rubyconf Brasil 2013: Conheça William PotHix
+        23 Agosto 2013, 12:20 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Meet William PotHix
+        23 Agosto 2013, 12:20 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Meet Bruno AbstractJ
+        23 Agosto 2013, 11:40 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Meet Danilo Sato
+        22 Agosto 2013, 12:08 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Bruno AbstractJ
+        22 Agosto 2013, 09:08 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Meet Eduardo Shiota
+        19 Agosto 2013, 12:45 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Eduardo Shiota
+        19 Agosto 2013, 12:45 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Vinheta de Abertura
+        19 Agosto 2013, 09:52 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Conheça Rodrigo Caffo
+        16 Agosto 2013, 16:53 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Your first time in São Paulo, Brazil
+        15 Agosto 2013, 17:00 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Danilo Sato
+        15 Agosto 2013, 14:59 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Meet Hongli Lai
+        14 Agosto 2013, 17:41 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Hongli Lai
+        14 Agosto 2013, 17:39 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Jaime Andrés Dávila
+        13 Agosto 2013, 18:59 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Jaime Andrés Dávila
+        13 Agosto 2013, 18:58 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Carlos (Chester) Nascimento
+        12 Agosto 2013, 15:00 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Meet Caike Souza
+        11 Agosto 2013, 10:00 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Caike Souza
+        11 Agosto 2013, 10:00 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Meet Pablo Astigarraga
+        09 Agosto 2013, 09:00 h | rubyconfbr2013 english
+        Rubyconf Brasil 2013: Conheça Pablo Astigarraga
+        09 Agosto 2013, 09:00 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Conheça Hal Fulton
+        08 Agosto 2013, 09:00 h | rubyconfbr2013
+        Rubyconf Brasil 2013: Meet Hal Fulton
+        08 Agosto 2013, 09:00 h | rubyconfbr2013 english
+        2013 - Julho
+        [Off-Topic] Zona de conforto: sair às ruas não é a única solução
+        23 Julho 2013, 14:20 h | off-topic career market insights startups carreira
+        Previsivelmente Irracional
+        12 Julho 2013, 20:44 h | off-topic principles psychology
+        2013 - Junho
+        Introdução à Agilidade
+        28 Junho 2013, 20:08 h | off-topic principles management agile
+        [#IF] Rotação de Logs em Apps Rails
+        28 Junho 2013, 14:57 h | learning rails
+        Processos, Metodologias e o Cérebro Humano
+        21 Junho 2013, 20:00 h | off-topic principles management science psychology
+        O que significa ser um Gerente?
+        07 Junho 2013, 19:40 h | off-topic principles management agile carreira
+        2013 - Maio
+        Desmistificando o método Kanban
+        31 Maio 2013, 19:31 h | of-topic principles management agile
+        [Off-Topic] Visão do Passado sobre a Internet
+        26 Maio 2013, 20:56 h | off-topic biography
+        [Off-Topic] Visão do Passado sobre a Internet
+        26 Maio 2013, 19:56 h | off-topic biography
+        Processos e Metodologias não vão te Ajudar
+        24 Maio 2013, 19:29 h | off-topic principles management agile carreira
+        [Tradução] Padrões: excelência vs. mediocridade
+        17 Maio 2013, 19:25 h | off-topic management agile translation carreira
+        [Off-Topic] Pessoas: Animais Racionais? O id e o ego no marketing
+        14 Maio 2013, 20:54 h | off-topic principles science psychology startups
+        Indo de Ruby 1.8 e Rails 2.3 para Ruby 2.0 e Rails 3.2
+        13 Maio 2013, 17:37 h | learning rails
+        [#IF] ActiveAdmin + Editor HTML 5
+        13 Maio 2013, 14:24 h | learning rails activeadmin
+        A Língua Portuguesa-Brasileira Pode Nos Confundir: Standard vs Pattern
+        10 Maio 2013, 19:18 h | off-topic career insights
+        [Off-Topic] Blogs are Obsolete. What's Next?
+        04 Maio 2013, 14:46 h | english insights blog
+        2013 - Abril
+        Ruby 1.9 e Tail Call Optimization
+        11 Abril 2013, 00:25 h | learning ruby
+        [Tradução] Estimativa - O Melhor que Podemos Fazer
+        05 Abril 2013, 16:47 h | off-topic principles career management agile carreira
+        [Off-Topic] Restrições são libertadoras: menos é mais
+        01 Abril 2013, 06:19 h | off-topic principles management market insights startups carreira
+        2013 - Março
+        Quais são algumas das piores práticas para aplicações Ruby on Rails?
+        24 Março 2013, 12:45 h | learning rails
+        [Off-Topic] A maioria disse que usaria meu produto. Vai dar certo? Não!
+        11 Março 2013, 06:39 h | off-topic insights startups
+        2013 - Janeiro
+        [Off-Topic] O Mundo Hoje é Muito Bom! Feliz 2013!
+        02 Janeiro 2013, 02:05 h | off-topic principles philosophy insights
+        2012 - Dezembro
+        [Off-Topic] Um Desabafo III, refletindo sobre 2007
+        30 Dezembro 2012, 21:30 h | off-topic principles career insights biography
+        2012 - Novembro
+        Startup Journey 2012
+        21 Novembro 2012, 10:45 h | startups
+        Viagem à Europa (Parte 3) - Tel Aviv, Israel
+        21 Novembro 2012, 01:57 h | europe2012 israel
+        Viagem à Europa (Parte 2) - Berlim, Alemanha
+        20 Novembro 2012, 19:21 h | europe2012 berlim
+        Viagem à Europa (Parte 1) - Amsterdã, Holanda
+        20 Novembro 2012, 14:22 h | europe2012 amsterdam
+        Viagem a São Francisco (Parte 3) - Pessoas e Turismo
+        06 Novembro 2012, 16:10 h | sanfrancisco2012 tourism
+        Viagem a São Francisco (Parte 2) - Visitando Empresas
+        05 Novembro 2012, 22:45 h | sanfrancisco2012
+        Viagem a São Francisco (Parte 1) - Techcrunch Disrupt
+        05 Novembro 2012, 18:10 h | sanfrancisco2012 techcrunch
+        2012 - Setembro
+        _Why, Ruby Dramas, and Dynamiting Courtlandt
+        07 Setembro 2012, 14:37 h | philosophy ruby why english
+        _Why Documentary at Rubyconf 2012, Denver
+        03 Setembro 2012, 00:54 h | philosophy ruby why english
+        Ruby is Beautiful? What is Beauty?
+        02 Setembro 2012, 21:46 h | off-topic principles career philosophy english
+        RubyConf Brasil 2012 - It's a Wrap!
+        01 Setembro 2012, 22:00 h | rubyconfbr2012
+        2012 - Agosto
+        RubyConf Brasil 2012 - Falta só 10 dias!
+        20 Agosto 2012, 15:50 h | rubyconfbr2012
+        [Off-Topic] O Mito do "Legado"
+        15 Agosto 2012, 12:28 h | off-topic principles career management carreira
+        Ruby e Rails no Ubuntu 12.04 LTS Precise Pangolin
+        13 Agosto 2012, 21:28 h | learning linux tutorial
+        2012 - Julho
+        [English] Minimal I18n with Rails 3.2
+        24 Julho 2012, 13:42 h | learning rails tutorial i18n
+        ActiveAdmin + Best in Place
+        23 Julho 2012, 19:36 h | learning rails tutorial activeadmin
+        Internationalização (I18n) Mínima em Rails 3.2 - Parte 2
+        14 Julho 2012, 22:44 h | learning rails i18n tutorial
+        Internationalização (I18n) Mínima em Rails 3.2 - Parte 1
+        14 Julho 2012, 22:39 h | learning rails i18n tutorial
+        Registration are Open for Rubyconf Brazil 2012
+        11 Julho 2012, 14:13 h | rubyconfbr2012 english
+        Inscrições Abertas para a Rubyconf Brasil 2012!
+        11 Julho 2012, 14:03 h | rubyconfbr2012
+        [Off-Topic] Steve Jobs, The Lost Inverview
+        08 Julho 2012, 20:43 h | steve-jobs
+        Asset Pipeline para Iniciantes - Parte 2
+        01 Julho 2012, 23:35 h | learning rails tutorial front-end
+        Asset Pipeline para Iniciantes
+        01 Julho 2012, 05:34 h | learning beginner rails tutorial front-end
+        2012 - Junho
+        Algumas Dicas da Linguagem Ruby
+        29 Junho 2012, 18:35 h | learning beginner ruby tutorial
+        2012 - Maio
+        [Off-Topic] Grandes Artistas Roubam
+        13 Maio 2012, 11:00 h | off-topic principles career philosophy
+        [Off-Topic] Reading with subtitles over Kanjis in Japanese webpages
+        08 Maio 2012, 10:36 h | off-topic learning mac english
+        2012 - Abril
+        [Off-Topic] Comprei meu primeiro Mac, e agora? (Edição 2012)
+        20 Abril 2012, 19:15 h | learning beginner mac
+        [Heroku Tips] Enciclopédia do Heroku
+        20 Abril 2012, 15:37 h | learning beginner rails heroku
+        RubyConf Brasil 2012 - Call for Papers
+        10 Abril 2012, 17:05 h | rubyconfbr2012
+        Screencasts Liberados Gratuitamente!
+        09 Abril 2012, 00:41 h | learning beginner screencasts
+        2011 - Dezembro
+        [Off-Topic] Mensagem de Ano Novo - Filosofia
+        31 Dezembro 2011, 21:29 h | off-topic principles philosophy
+        2011 - Novembro
+        [Journey to Japan #3] Exclusive Video Interviews
+        28 Novembro 2011, 02:40 h | rubykaigi2011 english
+        Páginas Estáticas no Rails
+        11 Novembro 2011, 01:38 h | learning beginner rails
+        RubyConf Brasil 2011 - Grande Sucesso!
+        07 Novembro 2011, 00:17 h | rubyconfbr2011
+        Primeiro Dia de RubyConf Brasil 2011
+        03 Novembro 2011, 07:03 h | rubyconfbr2011
+        2011 - Outubro
+        RubyConf Brasil 2011 - Lightning Talks e Twitter Streams
+        31 Outubro 2011, 10:25 h | rubyconfbr2011
+        RubyConf Brasil 2011 - Palestrantes Brasileiros
+        26 Outubro 2011, 04:03 h | rubyconfbr2011
+        RubyConf Brasil 2011 - Palestrantes Internacionais
+        14 Outubro 2011, 03:28 h | rubyconfbr2011
+        [Off-Topic] Tributo a Steve Jobs
+        06 Outubro 2011, 01:41 h | steve-jobs
+        2011 - Setembro
+        [Off-Topic] Disney, História do Computador e o Encarte Perdido
+        25 Setembro 2011, 02:41 h | biography career
+        RubyConf Brasil 2011 está chegando!
+        19 Setembro 2011, 01:41 h | rubyconfbr2011
+        RubyConf Brazil 2011 is coming!
+        19 Setembro 2011, 01:41 h | rubyconfbr2011 english
+        [Off-Topic] Minha Carreira - Fase 5 - Codeminer 42
+        19 Setembro 2011, 01:27 h | codeminer42
+        2011 - Agosto
+        [Journey to Japan #2] The Final RubyKaigi
+        05 Agosto 2011, 09:13 h | rubykaigi2011 english
+        2011 - Julho
+        [Journey to Japan #1] Exploring Tokyo City
+        26 Julho 2011, 02:54 h | rubykaigi2011 english
+        Em breve: Jornada ao Japão
+        23 Julho 2011, 21:33 h | rubykaigi2011
+        Upcoming: Journey to Japan
+        23 Julho 2011, 21:30 h | rubykaigi2011 english
+        Indo para a RubyKaigi 2011 - Fechando um Ciclo
+        11 Julho 2011, 00:26 h | rubykaigi2011 biography
+        2011 - Maio
+        [Off-Topic] Opiniões, Verdades, Democracia e Ética
+        04 Maio 2011, 03:18 h | off-topic principles management agile carreira
+        2011 - Abril
+        [Off-Topic] Mea Culpa: Organizações Democráticas não Funcionam
+        25 Abril 2011, 04:12 h | off-topic principles management agile carreira
+        [Objective-C] Distributing your Static Library
+        24 Abril 2011, 00:46 h | learning beginner apple objective-c english
+        [Objective-C] Categories, Static Libraries and Gotchas
+        23 Abril 2011, 23:44 h | learning beginner apple objective-c english
+        [Objective-C] It's a Unix System! I know this!
+        23 Abril 2011, 22:47 h | learning beginner apple objective-c english
+        [Off-Topic] Adendo à controvérsia HAML, SASS, Coffeescript: Tamanho do Documento
+        19 Abril 2011, 19:25 h | javascript fud
+        A Controvérsia Test::Unit vs RSpec/Cucumber
+        17 Abril 2011, 15:26 h | fud rspec ruby
+        A Controvérsia CoffeeScript
+        16 Abril 2011, 18:31 h | javascript fud
+        Twitter muda de Ruby para Java. Ruby é 3x mais lento que Java.
+        16 Abril 2011, 01:57 h | twitter java scala fud
+        2011 - Março
+        [Off-Topic] iOS Development and Open Source Libraries
+        26 Março 2011, 15:59 h | learning beginner apple objective-c english
+        2011 - Fevereiro
+        [Off-Topic] Desmistificando a Microsoft do "Mal"
+        20 Fevereiro 2011, 17:53 h | off-topic principles philosophy translation
+        [Off-Topic] The Fountainhead: Defesa de Howard Roark
+        04 Fevereiro 2011, 02:40 h | off-topic principles philosophy
+        [Off-Topic] A Revolta de Atlas: Dinheiro é a raíz de todo o mal?
+        03 Fevereiro 2011, 22:17 h | off-topic principles philosophy
+        2011 - Janeiro
+        [Documentário] The iPod Revolution
+        30 Janeiro 2011, 12:23 h | off-topic apple screencasts
+        2010 - Dezembro
+        [Objective-C] Method Missing!
+        06 Dezembro 2010, 02:55 h | learning beginner apple objective-c
+        2010 - Novembro
+        [Objective-C] Brincando com Categorias e Blocos
+        28 Novembro 2010, 18:58 h | learning beginner apple objective-c
+        [Objective-C] Entendendo NSAutoreleasePool
+        25 Novembro 2010, 01:13 h | learning beginner apple objective-c
+        2010 - Outubro
+        [Off-Topic] Dicas de Mac para Palestrantes
+        31 Outubro 2010, 00:32 h | learning beginner mac
+        RubyConf Brasil 2010 - Sucesso!
+        30 Outubro 2010, 19:45 h | rubyconfbr2010
+        2010 - Setembro
+        RubyConf Brazil is Coming up!
+        03 Setembro 2010, 02:34 h | rubyconfbr2010 english
+        O RubyConf Brasil está Chegando!
+        03 Setembro 2010, 02:33 h | rubyconfbr2010
+        2010 - Agosto
+        [Screencast] Começando com Git
+        17 Agosto 2010, 00:21 h | learning beginner git screencast
+        2010 - Julho
+        Lost in Translation
+        29 Julho 2010, 16:08 h | interview english
+        Usando ETAG e Memcached
+        06 Julho 2010, 05:43 h | learning beginner rails
+        What happened to Rails Summit Latin America?
+        05 Julho 2010, 11:04 h | rubyconfbr2010 english
+        O que aconteceu com o Rails Summit?
+        05 Julho 2010, 11:03 h | rubyconfbr2010
+        [Screencast] Entenda Software da Maneira Correta
+        01 Julho 2010, 00:25 h | agile screencast
+        2010 - Junho
+        [Off-Topic] Jeff Patton e Megan Fox no mesmo post?
+        27 Junho 2010, 09:30 h | off-topic principles management agile
+        [RailsConf 2010] - Video Interview - David Hansson
+        17 Junho 2010, 15:05 h | railsconf2010 interview english
+        [RailsConf 2010] - Video Entrevista - David Hansson
+        17 Junho 2010, 15:04 h | railsconf2010 interview
+        [RailsConf 2010] - Video Interviews - Part 2
+        17 Junho 2010, 15:04 h | railsconf2010 interview english
+        [RailsConf 2010] - Video Interviews - Part 1
+        17 Junho 2010, 15:03 h | railsconf2010 interview english
+        [RailsConf 2010] - Video Entrevistas - Parte 2
+        17 Junho 2010, 15:03 h | railsconf2010 interview
+        [RailsConf 2010] - Video Entrevistas - Parte 1
+        17 Junho 2010, 15:00 h | railsconf2010 interview
+        [RailsConf 2010] - Viagem e Evento
+        17 Junho 2010, 03:21 h | railsconf2010
+        [RailsConf 2010] - Video Interview - Robert Martin (English)
+        16 Junho 2010, 17:27 h | railsconf2010 interview english
+        [RailsConf 2010] - Video Entrevista - Robert Martin
+        16 Junho 2010, 17:26 h | railsconf2010 interview
+        2010 - Maio
+        Você já está usando ETAGs, certo?
+        25 Maio 2010, 10:15 h | learning beginner rails
+        2010 - Abril
+        [Off-Topic] O Programador Humilde, por Edsger W. Dijkstra
+        12 Abril 2010, 08:49 h | off-topic principles career
+        2010 - Março
+        [Off-Topic] Penn & Teller e Larry Flynt, sobre Liberdade
+        07 Março 2010, 02:21 h | off-topic principles philosophy
+        2010 - Fevereiro
+        [Off-Topic] Wake up Call
+        14 Fevereiro 2010, 09:38 h | off-topic career
+        2010 - Janeiro
+        [Off-Topic] Lendo os Princípios Ágeis
+        30 Janeiro 2010, 19:32 h | off-topic principles career management agile carreira
+        [Off-Topic] Empresas, Pessoas, Sucesso
+        30 Janeiro 2010, 14:22 h | off-topic career
+        [Off-Topic] Quem é o Burro?
+        08 Janeiro 2010, 19:14 h | off-topic principles psychology
+        Off-Topic: Literatura para Gerentes Ágeis
+        06 Janeiro 2010, 03:24 h | off-topic career management learning carreira
+        [Off Topic] Dunbar e Cross Functional Teams
+        02 Janeiro 2010, 23:35 h | off-topic management
+        2009 - Dezembro
+        [Off Topic] Cuidado com o Kanban-butt
+        16 Dezembro 2009, 23:22 h | off-topic management agile
+        [Off-Topic] Você não entende nada de Scrum
+        10 Dezembro 2009, 23:23 h | off-topic principles career management agile carreira
+        Prêmio Info 2009: Personalidade do Ano
+        02 Dezembro 2009, 08:08 h | award
+        2009 - Novembro
+        [Off-Topic] Restaurantes e Tecnologia
+        18 Novembro 2009, 16:51 h | off-topic management
+        Chatting with Adam Jacob
+        18 Novembro 2009, 11:46 h | interview english
+        Chatting with Luke Kanies
+        18 Novembro 2009, 11:45 h | interview english
+        [Tradução] Três Contextos Implícitos em Ruby
+        16 Novembro 2009, 15:28 h | learning ruby translation beginner
+        [Tradução] Metaprogramação em Ruby: é tudo sobre Self
+        16 Novembro 2009, 14:56 h | learning ruby translation beginner
+        Rubistas.com.br
+        10 Novembro 2009, 15:22 h | railssummit2010
+        [Off-Topic] Obediência à Autoridade
+        08 Novembro 2009, 18:50 h | off-topic principles career management psychology
+        [Off-Topic] Celulares e Aviões
+        08 Novembro 2009, 16:05 h | off-topic principles
+        [Off-Topic] O problema das credenciais
+        04 Novembro 2009, 19:21 h | off-topic principles career carreira
+        2009 - Outubro
+        [Rails Summit 2010] Commence Planning
+        30 Outubro 2009, 00:39 h | railssummit2010 english
+        [Rails Summit 2010] Iniciando o Planejamento
+        27 Outubro 2009, 19:36 h | railssummit2010
+        [Rails Summit 2009] Retrospectiva
+        17 Outubro 2009, 17:06 h | railssummit2009
+        [Rails Summit 2009] ThoughtWorks pousa no Brasil
+        08 Outubro 2009, 15:55 h | railssummit2009
+        [Rails Summit 2009] Palestrante Arthur Zapparoli
+        06 Outubro 2009, 09:03 h | railssummit2009
+        [Rails Summit 2009] Palestrante Nando Vieira
+        01 Outubro 2009, 09:32 h | railssummit2009
+        2009 - Setembro
+        [Rails Summit 2009] Palestrante Ilya Grigorik
+        27 Setembro 2009, 20:18 h | railssummit2009
+        [Off-Topic] Procurar Raciocionar Faz Bem
+        26 Setembro 2009, 16:17 h | off-topic principles career agile
+        [Rails Summit 2009] Palestrante Matt Aimonetti
+        23 Setembro 2009, 18:13 h | railssummit2009
+        [Rails Summit 2009] Palestrante Carlos Brando
+        21 Setembro 2009, 07:18 h | railssummit2009
+        [Rails Summit 2009] Palestrante Bryan Liles
+        18 Setembro 2009, 10:29 h | railssummit2009
+        [Rails Summit 2009] Palestrante Leonardo Borges
+        17 Setembro 2009, 16:51 h | railssummit2009
+        [Rails Summit 2009] O Trailer mais Esperado!
+        17 Setembro 2009, 09:06 h | railssummit2009
+        [Rails Summit 2009] Teaser Trailer
+        16 Setembro 2009, 06:35 h | railssummit2009
+        [Off-Topic] A Argumentação através da Intimidação
+        12 Setembro 2009, 09:40 h | off-topic principles fallacies
+        [Off-Topic] Direitos do Homem
+        09 Setembro 2009, 23:14 h | off-topic principles philosophy
+        [Off-Topic] O Culto da Moral Cinzenta
+        08 Setembro 2009, 11:27 h | off-topic philosophy principles
+        2009 - Agosto
+        [Off-Topic] Maldita Lei de Regulamentação está de volta!
+        22 Agosto 2009, 17:01 h | off-topic principles market regulation carreira
+        2009 - Julho
+        [Off-Topic] Todos os Marketeiros são Mentirosos
+        31 Julho 2009, 09:54 h | off-topic career
+        Rails Summit Latin America 2009
+        30 Julho 2009, 00:59 h | railssummit2009
+        [Tradução] O que faz um bom programador?
+        23 Julho 2009, 10:35 h | off-topic career translation carreira
+        [Off-Topic] Comprei meu primeiro Mac, e agora?
+        19 Julho 2009, 22:01 h | off-topic mac apple learning beginner
+        [Off-Topic] Intervir ou não Intervir? O "Catch-22" dos Co-Pilotos
+        18 Julho 2009, 10:57 h | off-topic principles management career
+        [Off-Topic] Livros de Referência 2008-2009
+        11 Julho 2009, 01:06 h | off-topic management career carreira
+        [Off-Topic] Agilidade, Caos, Auto-Organização
+        08 Julho 2009, 02:15 h | off-topic management agile chaos
+        Screencast: Agilidade, Qualidade e Futuro
+        07 Julho 2009, 12:18 h | agile screencast
+        [Off-Topic] Contrato de Escopo Negociável
+        05 Julho 2009, 16:59 h | off-topic management
+        [Off-Topic] Autoridade vs Responsabilidade
+        05 Julho 2009, 15:10 h | off-topic management
+        Dicas de Git
+        05 Julho 2009, 14:56 h | learning beginner git
+        2009 - Junho
+        [Off-Topic] Padrões, Commodities e Inovações
+        14 Junho 2009, 19:17 h | off-topic management
+        [Tradução] Conselhos para Gerentes de Desenvolvimento de Software
+        05 Junho 2009, 00:35 h | off-topic management carreira
+        2009 - Maio
+        [Off-Topic] As 5 disfunções de equipes em código
+        31 Maio 2009, 16:10 h | off-topic management carreira
+        RailsConf 09 - Ninh Grosenbach Bui
+        11 Maio 2009, 00:12 h | railsconf2009 interview english
+        RailsConf 09 - Message from Bryan Liles (TATFT) to Brazil
+        08 Maio 2009, 05:26 h | interview railsconf2009 english
+        RailsConf 09 - Exclusive Audio Interviews
+        08 Maio 2009, 05:07 h | railsconf2009 interview english
+        RailsConf 09 - Message from Peter Cooper to Ruby Inside Brazil
+        08 Maio 2009, 04:11 h | railsconf2009 interview english
+        RailsConf 09 - DHH - The Secret of Productivity
+        08 Maio 2009, 04:07 h | railsconf2009 english
+        RailsConf 09 - Uncle Bob - Professionalism
+        07 Maio 2009, 04:34 h | railsconf2009 english
+        RailsConf 09 - Uncle Bob Martin
+        06 Maio 2009, 22:26 h | railsconf2009 interview english
+        Going to RailsConf 2009
+        02 Maio 2009, 10:02 h | railsconf2009 english
+        2009 - Abril
+        Off-Topic: Devo fazer faculdade?
+        17 Abril 2009, 20:41 h | off-topic career
+        Locos x Rails Wrap up
+        07 Abril 2009, 13:55 h | locosrails2009
+        2009 - Março
+        [Off-Topic] Net Negative Producing Programmer
+        30 Março 2009, 01:25 h | off-topic principles career management translation carreira
+        2009 - Fevereiro
+        Tradução: Scrum Flácido
+        03 Fevereiro 2009, 03:32 h | off-topic agile management translation
+        2008 - Dezembro
+        Tradução: Dívida Técnica
+        18 Dezembro 2008, 01:55 h | off-topic principles career management translation carreira
+        Off-Topic: Método Científico vs Cargo Cult
+        16 Dezembro 2008, 13:51 h | off-topic principles science career
+        Ruby on Rails ganhou o Prêmio Info 2008
+        04 Dezembro 2008, 01:50 h | award
+        2008 - Novembro
+        QCon Special - Signing Off
+        22 Novembro 2008, 16:03 h | qcon2008 english
+        Rails Podcast Brasil, QCon Special - Ola Bini (JRuby, Ioke)
+        22 Novembro 2008, 07:03 h | qcon2008 interview english
+        Rails Podcast Brasil, QCon Special - John Straw (YellowPages.com) and Matt Aimonetti (Merb)
+        21 Novembro 2008, 04:06 h | qcon2008 interview english
+        Rails Podcast Brasil, QCon Special - Nick Sieger (JRuby) and Francesco Cesarini (Erlang)
+        21 Novembro 2008, 03:11 h | qcon2008 interview english
+        Rails Podcast Brasil, QCon Special - Jan Lehnardt and Chris Anderson from CouchDB
+        19 Novembro 2008, 22:59 h | qcon2008 interview english
+        Rails Podcast Brasil, QCon Special - Yehuda Katz
+        19 Novembro 2008, 08:06 h | qcon2008 interview english
+        Rails Summit: Blogosfera
+        12 Novembro 2008, 02:17 h | railssummit2008
+        Micro-Tutorial de Ruby
+        10 Novembro 2008, 01:48 h | learning beginner ruby tutorial
+        Micro-Tutorial de Ruby - Parte III
+        10 Novembro 2008, 01:43 h | learning beginner ruby tutorial
+        Micro-Tutorial de Ruby - Parte II
+        10 Novembro 2008, 01:42 h | learning beginner ruby tutorial
+        Micro-Tutorial de Ruby - Parte I
+        10 Novembro 2008, 01:41 h | learning beginner ruby tutorial
+        2008 - Outubro
+        Rails Summit: Sucesso = Comunidade
+        20 Outubro 2008, 21:52 h | railssummit2008
+        Rails Summit: é amanhã, preparem-se!
+        14 Outubro 2008, 10:02 h | railssummit2008
+        Rails Summit: Últimos Dias!
+        10 Outubro 2008, 13:02 h | railssummit2008
+        Palestrante Rails Summit: George Guimarães
+        10 Outubro 2008, 11:02 h | railssummit2008
+        Off-Topic: Entendendo a Crise Econômica
+        09 Outubro 2008, 03:17 h | off-topic principles economics chaos
+        Off-Topic: O Manifesto Ágil, ou Como se Tornar o Google
+        07 Outubro 2008, 03:39 h | off-topic principles agile career management chaos
+        Rails Summit: Next Week! (photos)
+        06 Outubro 2008, 19:24 h | railssummit2008 english
+        Rails Summit: Semana que vem! (fotos)
+        06 Outubro 2008, 18:55 h | railssummit2008
+        2008 - Setembro
+        Conversando com Joshua Peek
+        27 Setembro 2008, 21:54 h | interview
+        Rails Summit: Apoio
+        26 Setembro 2008, 02:47 h | railssummit2008
+        Chatting with Joshua Peek
+        26 Setembro 2008, 02:32 h | interview english
+        Off-Topic: O Poder do Mito, Redux
+        20 Setembro 2008, 05:56 h | off-topic principles philosophy career
+        Rails Summit: Promoção para Estudantes por Tempo Limitado!
+        10 Setembro 2008, 15:43 h | railssummit2008
+        Palestrante Rails Summit: Danilo Sato
+        03 Setembro 2008, 11:59 h | railssummit2008
+        Rails Summit: Preço Promocional chegando ao fim
+        03 Setembro 2008, 00:00 h | railssummit2008
+        2008 - Agosto
+        Palestrante Rails Summit: Vinicius Teles
+        29 Agosto 2008, 17:47 h | railssummit2008
+        Palestrante Rails Summit: Fabio Kung
+        29 Agosto 2008, 17:21 h | railssummit2008
+        Palestrante Rails Summit: Carlos Villela
+        27 Agosto 2008, 22:27 h | railssummit2008
+        Rails Summit: now really for Latin America!
+        22 Agosto 2008, 12:15 h | railssummit2008 english
+        Rails Summit: Pagamento por Boleto
+        20 Agosto 2008, 12:16 h | railssummit2008
+        Rails Summit na Linux Magazine!
+        06 Agosto 2008, 12:03 h | railssummit2008
+        Largada para o Maior Evento de Rails da América Latina!
+        01 Agosto 2008, 18:41 h | railssummit2008
+        2008 - Julho
+        Tradução: Por que você não deve codificar em Português
+        31 Julho 2008, 16:41 h | career translation
+        Tradução: Regras de Otimização
+        21 Julho 2008, 19:25 h | career translation
+        Off Topic: Por que programadores devem jogar Go
+        15 Julho 2008, 01:07 h | go
+        RAILS SUMMIT LATIN AMERICA 2008
+        13 Julho 2008, 13:05 h | railssummit2008
+        Está chegando a hora! Rails Summit Brazil 2008!
+        04 Julho 2008, 20:01 h | railssummit2008
+        Chatting with Luis Lavena (Ruby on Windows)
+        02 Julho 2008, 14:16 h | interview english
+        2008 - Junho
+        RailsConf 2008 - Video Interview with Phusion
+        24 Junho 2008, 11:46 h | railsconf2008
+        Chatting with Blaine Cook (Twitter)
+        17 Junho 2008, 00:29 h | interview english
+        Machucando Código por Diversão e Lucro
+        14 Junho 2008, 18:54 h | presentation screencast
+        RailsConf 2008 - Memories
+        05 Junho 2008, 21:33 h | railsconf2008 english
+        RailsConf 2008 - Rails Scales!
+        05 Junho 2008, 16:41 h | railsconf2008 english
+        RailsConf 2008 - DHH vs Spolsky, epilogue
+        05 Junho 2008, 14:31 h | railsconf2008 english
+        RailsConf 2008 - Rails 2.1 Released!
+        04 Junho 2008, 19:44 h | railsconf2008 english
+        RailsConf 2008 - Ruby Heroes Awards
+        04 Junho 2008, 18:10 h | railsconf2008 english
+        RailsConf 2008 - Phusion Passenger Enterprise Edition Unleashed!
+        04 Junho 2008, 15:01 h | railsconf2008 passenger english
+        RailsConf 2008: A Controvérsia MagLev
+        04 Junho 2008, 12:13 h | railsconf2008 smalltalk
+        AkitaOnRails na RailsConf 2008 - Preview
+        02 Junho 2008, 05:16 h | biography railsconf2008 phusion
+        2008 - Maio
+        My Career - Level 3
+        21 Maio 2008, 11:15 h | biography locaweb english
+        Minha Carreira Rails - Fase 3
+        20 Maio 2008, 12:30 h | biography locaweb
+        Off-Topic: Dando o Sangue pelo Rails! Parte 2
+        16 Maio 2008, 12:27 h | biography
+        Off-Topic: Dando o Sangue pelo Rails!
+        07 Maio 2008, 18:34 h | biography
+        Chatting with Hongli Lai and Ninh Bui (Phusion)
+        06 Maio 2008, 21:39 h | interview english
+        2008 - Abril
+        Chatting with Chris Wanstrath (Err the Blog/Github)
+        21 Abril 2008, 19:12 h | interview english
+        Off Topic: Vamos todos impedir a regulamentação da profissão de analista de sistema
+        19 Abril 2008, 20:22 h | off-topic principles market regulation
+        Off Topic: Nunca confie no TIOBE
+        13 Abril 2008, 14:40 h | off-topic principles fallacies tiobe
+        Off-Topic: Google App Engine e Cloud Computing
+        13 Abril 2008, 01:27 h | cloud-computing google
+        MOD_RAILS LANÇADO!!
+        11 Abril 2008, 15:59 h | passenger
+        GitHub Oficialmente Lançado!!
+        10 Abril 2008, 18:02 h | github
+        Interviewed by FiveRuns
+        04 Abril 2008, 13:31 h | biography interview english
+        Micro Tutorial de Git
+        02 Abril 2008, 23:57 h | git tutorial
+        Finalmente! Rails mudando de SVN para Git!!
+        02 Abril 2008, 21:29 h | subversion git rails
+        2008 - Março
+        Rails serve para grandes aplicações?
+        12 Março 2008, 02:17 h | rails pitch
+        Off Topic: Somos Matematicamente Ignorantes
+        01 Março 2008, 14:18 h | off-topic principles science fallacies
+        2008 - Fevereiro
+        Tradução: Tipagem Dinâmica vs Linguagem Dinâmica Explicado
+        22 Fevereiro 2008, 19:38 h | learning beginner translation
+        Aguri: A Estrutura de Dados mais Legal que Você Nunca Ouviu Falar
+        21 Fevereiro 2008, 22:03 h | learning algorithm
+        Chatting with Scott Hanselman
+        18 Fevereiro 2008, 09:45 h | interview english
+        Chatting with Evan Phoenix
+        11 Fevereiro 2008, 22:42 h | interview english
+        Conversando com Evan Phoenix
+        11 Fevereiro 2008, 20:43 h | interview
+        Tradução: De quem é essa variável, afinal?
+        11 Fevereiro 2008, 01:13 h | learning ruby smalltalk java beginner
+        Tradução: Não sei o que quero, mas sei como conseguir
+        10 Fevereiro 2008, 17:18 h | off-topic principles agile management career
+        2008 - Janeiro
+        Tradução: Faça uma Apresentação como Steve Jobs
+        27 Janeiro 2008, 21:00 h | steve-jobs career presentation
+        Tradução: Lisp em Ruby
+        27 Janeiro 2008, 05:42 h | learning beginner ruby lisp
+        Off Topic: "I am Legend" - HORRÍVEL!
+        19 Janeiro 2008, 02:46 h | leisure off-topic
+        Chatting with Hal Fulton
+        09 Janeiro 2008, 21:27 h | interview english
+        Conversando com Peter Cooper
+        09 Janeiro 2008, 11:24 h | interview
+        Chatting with Peter Cooper
+        04 Janeiro 2008, 09:30 h | interview english
+        Conversando com Adrian Holovaty
+        01 Janeiro 2008, 16:47 h | interview
+        Chatting with Adrian Holovaty
+        01 Janeiro 2008, 02:01 h | interview english
+        2007 - Dezembro
+        Chatting with Avi Bryant - Part 2
+        22 Dezembro 2007, 20:36 h | interview english
+        Conversando com Avi Bryant - Parte 2
+        22 Dezembro 2007, 20:13 h | interview
+        Cuidado com suas Closures
+        21 Dezembro 2007, 14:52 h | learning beginner ruby
+        Ruby on SimpleDB
+        16 Dezembro 2007, 10:06 h | nosql biography insights
+        Chatting with Avi Bryant - Part 1
+        15 Dezembro 2007, 12:15 h | interview english
+        Conversando com Avi Bryant - Parte 1
+        15 Dezembro 2007, 10:18 h | interview
+        class Ruby; include Smalltalk; end
+        02 Dezembro 2007, 15:15 h | learning beginner ruby smalltalk
+        2007 - Novembro
+        Anatomia de Ruby Blocks/Closures
+        30 Novembro 2007, 10:59 h | learning beginner ruby
+        Ruby Symbols
+        26 Novembro 2007, 11:33 h | learning beginner ruby
+        Chatting with John Lam (IronRuby)
+        12 Novembro 2007, 18:37 h | interview english
+        Conversando com John Lam (IronRuby)
+        12 Novembro 2007, 16:59 h | interview
+        2007 - Setembro
+        GIT: Muito Promissor
+        22 Setembro 2007, 05:44 h | git
+        Jogar Pedra em Gato Morto: por que Subversion não presta
+        22 Setembro 2007, 01:03 h | subversion git
+        100% pure Object-Oriented: The Fallacy
+        04 Setembro 2007, 16:22 h | principles career paradigms
+        Tradução: Contar é Perda de Tempo
+        01 Setembro 2007, 13:08 h | off-topic career management agile translation
+        2007 - Agosto
+        Off Topic: Pálido Ponto Azul
+        29 Agosto 2007, 02:59 h | off-topic science
+        Por que Testar?
+        25 Agosto 2007, 20:04 h | principles tests
+        Off Topic: Inimigos da Razão
+        23 Agosto 2007, 17:37 h | off-topic principles career management science
+        A Falácia do Custo Perdido
+        19 Agosto 2007, 00:16 h | off-topic management carreira
+        AkitaOnRails, Retrospectiva 1985-2007
+        12 Agosto 2007, 02:02 h | off-topic biography insights
+        Conversando com Jamis Buck
+        06 Agosto 2007, 13:03 h | interview
+        Chatting with Jamis Buck
+        03 Agosto 2007, 22:46 h | interview english
+        2007 - Julho
+        GoF Design Patterns - Sobreviveu ao teste do tempo?
+        30 Julho 2007, 18:45 h | design-patterns
+        Chatting with Carl Youngblood
+        20 Julho 2007, 14:36 h | interview english
+        Conversando com Carl Youngblood
+        20 Julho 2007, 11:53 h | interview
+        Hanselminutes: Entrevista com David Hansson e Martin Fowler
+        08 Julho 2007, 00:20 h | translation hanselman
+        2007 - Junho
+        Primeiro Aniversário
+        30 Junho 2007, 15:35 h | surgeworks
+        Chatting with Ola Bini (JRuby Core Team Member)
+        21 Junho 2007, 20:58 h | interview english
+        Conversando com Ola Bini (JRuby Core Team Member)
+        21 Junho 2007, 20:42 h | interview jruby
+        Um Desabafo, parte II
+        19 Junho 2007, 15:30 h | off-topic career
+        Off Topic: Steve Jobs, Discurso em Stanford, 2005
+        13 Junho 2007, 21:51 h | off-topic apple steve-jobs
+        2007 - Maio
+        Novidade! Akita na Surgeworks
+        16 Maio 2007, 21:03 h | surgeworks
+        Conversando com David Black
+        11 Maio 2007, 21:19 h | interview
+        Chatting with David Black
+        11 Maio 2007, 18:14 h | interview english
+        Conversando com Chad Fowler
+        07 Maio 2007, 14:20 h | interview
+        Chatting with Chad Fowler
+        04 Maio 2007, 07:45 h | interview english
+        2007 - Abril
+        Conversando com Geoffrey Grosenbach
+        21 Abril 2007, 22:00 h | interview
+        Chatting with Geoffrey Grosenbach
+        19 Abril 2007, 19:33 h | interview english
+        Conversando com Dr. Nic
+        16 Abril 2007, 15:48 h | interview
+        Chatting with Dr. Nic
+        16 Abril 2007, 13:01 h | interview english
+        Coluna RubyOnbr: Acampamento de Curiosos
+        14 Abril 2007, 14:45 h | rubyonbr
+        Off Topic: Seja Arrogante!
+        14 Abril 2007, 13:19 h | off-topic career
+        2007 - Março
+        Off Topic: Um Desabafo
+        14 Março 2007, 03:02 h | off-topic career
+        Coluna RubyOnbr: Memórias de uma Tradução
+        02 Março 2007, 04:43 h | rubyonbr
+        2007 - Fevereiro
+        Quick and Clean
+        21 Fevereiro 2007, 04:50 h | career
+        Tradução Getting Real - Lançamento Release Candidate 2
+        01 Fevereiro 2007, 12:58 h | off-topic 37signals getting-real
+        2007 - Janeiro
+        Off Topic: "Here's to the crazy ones ..."
+        27 Janeiro 2007, 16:02 h | off-topic apple marketing
+        Off-topic: MacWorld 2007 - Steve Jobs anuncia o esperado iPhone!
+        09 Janeiro 2007, 11:34 h | off-topic apple iphone
+        Off-topic: MacWorld 2007 - Keynote do Steve Jobs
+        09 Janeiro 2007, 08:18 h | off-topic apple iphone
+        2006 - Dezembro
+        Minha Coluna na RubyOnBr: Rails, Sucesso pela Arrogância?
+        06 Dezembro 2006, 09:41 h | rubyonbr
+        David Hansson e Opinionated Software
+        05 Dezembro 2006, 07:38 h | rails pitch
+        2006 - Novembro
+        Entrevista com Yukihiro Matsumoto: parte IV
+        22 Novembro 2006, 05:22 h | interview matz translation
+        Minha Coluna na RubyOnBr: Desenvolvimento Sustentável com Rails
+        16 Novembro 2006, 09:34 h | rubyonbr
+        Entrevista com Yukihiro Matsumoto: parte III
+        07 Novembro 2006, 14:03 h | interview matz translation
+        MVC vs Model 2
+        01 Novembro 2006, 08:30 h | principles mvc
+        2006 - Outubro
+        Design Patterns representam defeitos nas Linguagens
+        30 Outubro 2006, 08:27 h | design-patterns principles
+        Livro Free: Getting Real, da 37signals
+        26 Outubro 2006, 06:20 h | 37signals getting-real
+        Kathy Sierra: Dilbert e a zona de mediocridade
+        19 Outubro 2006, 09:53 h | off-topic principles mediocrity
+        Entrevista com Yukihiro Matsumoto: parte II
+        14 Outubro 2006, 15:22 h | interview matz translation
+        Entrevista com Yukihiro Matsumoto: parte I
+        09 Outubro 2006, 05:03 h | interview matz translation
+        Um pouco de propaganda: Minha entrevista na Rubyonbr
+        01 Outubro 2006, 11:15 h | rubyonbr
+        2006 - Setembro
+        Evolução pela Concorrência
+        27 Setembro 2006, 16:13 h | off-topic principles markets
+        Jeff Bezos + 37signals
+        27 Setembro 2006, 14:50 h | 37signals
+        2006 - Abril
+        Rails Manifesto
+        11 Abril 2006, 12:09 h | narrativa rails pitch
+        Bem Vindos
+        05 Abril 2006, 01:59 h | first-post narrativa
+    </textarea>
+    <button onclick="extrairDatas()">Extrair Datas</button>
+    <div id="result"></div>
+
+    <script>
+        function extrairDatas() {
+            const texto = document.getElementById('texto').value;
+
+            // Expressão regular para capturar datas no formato "dia mês ano"
+            const regex = /\d{1,2} (de )?(janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro) (de )?\d{4}/gi;
+
+            // Encontrar todas as datas no texto
+            const datas = texto.match(regex);
+
+            // Exibir as datas encontradas
+            const resultadoDiv = document.getElementById('result');
+            if (datas) {
+                resultadoDiv.innerHTML = `<strong>Datas encontradas:</strong><br>${datas.join('<br>')}`;
+            } else {
+                resultadoDiv.innerHTML = 'Nenhuma data encontrada.';
+            }
+        }
+    </script>
+</body>
+</html>

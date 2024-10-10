@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrator de IPs com Filtro Avançado</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .hidden-column {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Extrator de IPs com Filtro Avançado</h1>
+    
+    <!-- Área de texto para entrada -->
+    <textarea id="inputText" rows="10" cols="50" placeholder="Cole seu texto aqui"></textarea><br><br>
+    
+    <!-- Botão para extrair os IPs -->
+    <button onclick="extractIPs()">Extrair e Organizar IPs</button>
+    
+    <!-- Campos de filtro -->
+    <div>
+        <label for="includeInput">Palavras Obrigatórias:</label>
+        <input type="text" id="includeInput" placeholder="Digite palavras obrigatórias" oninput="filterIPs()">
+    </div>
+    <div>
+        <label for="excludeInput">Palavras Excluídas:</label>
+        <input type="text" id="excludeInput" placeholder="Digite palavras excluídas" oninput="filterIPs()">
+    </div>
+    
+    <!-- Checkbox para mostrar/ocultar coluna de porta -->
+    <div style="margin-top: 20px;">
+        <label for="togglePort">Mostrar coluna de porta</label>
+        <input type="checkbox" id="togglePort" checked onchange="togglePortColumn()">
+    </div>
+    
+    <h2>IPs Organizados</h2>
+    <table id="ipTable">
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th id="portHeader">Porta</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        let sortedIPs = [];
+
+        function extractIPs() {
+            const text = document.getElementById('inputText').value;
+
+            // Expressão regular para encontrar IPs com ou sem porta
+            const ipRegex = /\b(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(:\d+)?\b/g;
+            const ips = text.match(ipRegex);
+
+            if (!ips) {
+                alert("Nenhum IP encontrado!");
+                return;
+            }
+
+            // Separar os IPs e portas
+            sortedIPs = ips.map(ip => {
+                const parts = ip.split(':');
+                return {
+                    ip: parts[0],
+                    port: parts[1] || '' // Se não houver porta, deixar como string vazia
+                };
+            }).sort((a, b) => {
+                // Ordenar IPs e portas
+                const ipComparison = a.ip.localeCompare(b.ip);
+                if (ipComparison === 0) {
+                    return (a.port || '').localeCompare(b.port || '');
+                }
+                return ipComparison;
+            });
+
+            // Exibir os IPs na tabela
+            displayIPs(sortedIPs);
+        }
+
+        function displayIPs(ips) {
+            // Limpar tabela
+            const tableBody = document.querySelector("#ipTable tbody");
+            tableBody.innerHTML = '';
+
+            // Preencher tabela com IPs
+            ips.forEach(({ ip, port }) => {
+                const row = document.createElement('tr');
+                const ipCell = document.createElement('td');
+                const portCell = document.createElement('td');
+
+                ipCell.textContent = ip;
+                portCell.textContent = port;
+
+                row.appendChild(ipCell);
+                row.appendChild(portCell);
+                tableBody.appendChild(row);
+            });
+
+            // Aplicar a visibilidade da coluna de porta
+            togglePortColumn();
+        }
+
+        function filterIPs() {
+            // Obter os valores dos campos de filtro
+            const includeValue = document.getElementById('includeInput').value.toLowerCase().trim();
+            const excludeValue = document.getElementById('excludeInput').value.toLowerCase().trim();
+
+            // Dividir as palavras obrigatórias e excluídas
+            const includeWords = includeValue ? includeValue.split(/\s+/) : [];
+            const excludeWords = excludeValue ? excludeValue.split(/\s+/) : [];
+
+            // Filtrar os IPs com base nas palavras obrigatórias e excluídas
+            const filteredIPs = sortedIPs.filter(({ ip, port }) => {
+                const ipAndPort = `${ip}${port ? ':' + port : ''}`.toLowerCase();
+                const includesRequiredWords = includeWords.every(word => ipAndPort.includes(word));
+                const excludesForbiddenWords = excludeWords.every(word => !ipAndPort.includes(word));
+                return includesRequiredWords && excludesForbiddenWords;
+            });
+
+            // Exibir os IPs filtrados
+            displayIPs(filteredIPs);
+        }
+
+        function togglePortColumn() {
+            // Verificar se o checkbox está marcado
+            const showPort = document.getElementById('togglePort').checked;
+
+            // Alterar a visibilidade da coluna de porta
+            const portCells = document.querySelectorAll('#ipTable tbody td:nth-child(2)');
+            const portHeader = document.getElementById('portHeader');
+
+            if (showPort) {
+                portHeader.classList.remove('hidden-column');
+                portCells.forEach(cell => cell.classList.remove('hidden-column'));
+            } else {
+                portHeader.classList.add('hidden-column');
+                portCells.forEach(cell => cell.classList.add('hidden-column'));
+            }
+        }
+    </script>
+
+</body>
+</html>
